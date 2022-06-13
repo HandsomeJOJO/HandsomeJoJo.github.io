@@ -1,0 +1,988 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Handsom JOJO">
+  <meta name="keywords" content="java, algorithm, blog">
+  
+    <meta name="description" content="链表相关算法题目精选，典中典">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法专项精选题 - 链表（一）">
+<meta property="og:url" content="http://example.com/2022/06/13/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A1%B9%E7%AE%97%E6%B3%95%E9%A2%98%E7%9B%AE/algorithom1/index.html">
+<meta property="og:site_name" content="幸福的西西弗斯">
+<meta property="og:description" content="链表相关算法题目精选，典中典">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/index/algorithm.png">
+<meta property="article:published_time" content="2022-06-13T14:21:24.000Z">
+<meta property="article:modified_time" content="2022-06-13T15:28:53.827Z">
+<meta property="article:author" content="Handsom JOJO">
+<meta property="article:tag" content="algorithm">
+<meta property="article:tag" content="data structure">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/algorithm.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>算法专项精选题 - 链表（一） - 幸福的西西弗斯</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.1","typing":{"enable":true,"typeSpeed":90,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Handsome JOJO</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/banner/algorithm.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="算法专项精选题 - 链表（一）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-13 22:21" pubdate>
+          2022年6月13日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          11k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          94 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">算法专项精选题 - 链表（一）</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h1><h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ul>
+<li><p>链表是空节点，或者有一个值和一个指向下一个链表的指针，因此很多链表问题可以用递归来处理</p>
+</li>
+<li><p>链表是一种动态数据结构，创建链表时候无需知道链表的长度</p>
+</li>
+<li><p>插入一个节点时候只需要为新的节点分配内存，然后调整指针的指向确保新节点被链接到链表当中</p>
+</li>
+<li><p>链表中查询节点需要 O(n) 时间复杂度</p>
+</li>
+<li><p>除了指向下一个，还指向前一个节点的链表为双向链表</p>
+</li>
+<li><p>面试遇到链表算法题目，选择更改输入的链表之前要问一下面试官是否可以</p>
+</li>
+<li><p>链表数据结构：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// Definition for singly-linked list.</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ListNode</span> &#123;<br>    <span class="hljs-type">int</span> val;<br>    ListNode next;<br>    ListNode(<span class="hljs-type">int</span> x) &#123;<br>        val = x;<br>        next = <span class="hljs-literal">null</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="1-找出两个链表的交点"><a href="#1-找出两个链表的交点" class="headerlink" title="1. 找出两个链表的交点"></a>1. 找出两个链表的交点</h2><ul>
+<li><p>题目：两个链表在某个节点处相交，找到第一个公共节点（lc160）</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>分别遍历两链表长度，得到长度差 gap，长链表先出发 gap 个节点，然后同时遍历比较节点，时间复杂度 O(m+n)</li>
+<li>用一个 HashSet 存放第一个链表所有节点，遍历第二个链表，遇到 HashSet 中存放的就 return，空间复杂度 O(m)</li>
+<li>双指针同时遍历两链表，A 链表遍历结束接 B 链表，B 链表遍历结束接 A 链表，遇到相同节点就 return，或者同时遍历到 null 就return null</li>
+</ol>
+</li>
+<li><p>题解：</p>
+<ol>
+<li><p>事先遍历</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-comment">// 分别遍历两链表长度，得到长度差 gap，长链表先出发 gap 个节点，然后同时遍历比较节点</span><br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">getIntersectionNode</span><span class="hljs-params">(ListNode headA, ListNode headB)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">aLen</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, bLen = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">tmp</span> <span class="hljs-operator">=</span> headA;<br>        <span class="hljs-keyword">while</span>(tmp != <span class="hljs-literal">null</span>) &#123;<br>            aLen++;<br>            tmp = tmp.next;<br>        &#125;<br>        tmp = headB;<br>        <span class="hljs-keyword">while</span>(tmp != <span class="hljs-literal">null</span>) &#123;<br>            bLen++;<br>            tmp = tmp.next;<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">gap</span> <span class="hljs-operator">=</span> aLen - bLen;<br>        <span class="hljs-keyword">if</span> (gap &lt; <span class="hljs-number">0</span>) &#123;<br>            tmp = headA;<br>            headA = headB;<br>            headB = tmp;<br>            gap = -gap;<br>        &#125;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">aCurr</span> <span class="hljs-operator">=</span> headA;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">bCurr</span> <span class="hljs-operator">=</span> headB;<br>        <span class="hljs-keyword">while</span> (gap != <span class="hljs-number">0</span>) &#123;<br>            aCurr = aCurr.next;<br>            gap--;<br>        &#125;<br>        <span class="hljs-keyword">while</span> (aCurr != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">if</span> (aCurr == bCurr) &#123;<br>                <span class="hljs-keyword">return</span> aCurr;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                aCurr = aCurr.next;<br>                bCurr = bCurr.next;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>HashSet</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-comment">// 用一个 HashSet 存放第一个链表所有节点，遍历第二个链表，遇到 HashSet 中存放的就 return，空间复杂度 O(m)</span><br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">getIntersectionNode</span><span class="hljs-params">(ListNode headA, ListNode headB)</span> &#123;<br>        Set&lt;ListNode&gt; visited = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashSet</span>&lt;ListNode&gt;();<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> headA;<br>        <span class="hljs-keyword">while</span> (temp != <span class="hljs-literal">null</span>) &#123;<br>            visited.add(temp);<br>            temp = temp.next;<br>        &#125;<br>        temp = headB;<br>        <span class="hljs-keyword">while</span> (temp != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">if</span> (visited.contains(temp)) &#123;<br>                <span class="hljs-keyword">return</span> temp;<br>            &#125;<br>            temp = temp.next;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>双指针</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-comment">// 双指针同时遍历两链表，A 链表遍历结束接 B 链表，B 链表遍历结束接 A 链表，遇到相同节点就 return，或者同时遍历到 null 就return null</span><br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">getIntersectionNode</span><span class="hljs-params">(ListNode headA, ListNode headB)</span> &#123;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">pA</span> <span class="hljs-operator">=</span> headA, pB = headB;<br>        <span class="hljs-comment">// 两节点相同或两节点都是 null，可以简化成 pA == pB</span><br>        <span class="hljs-comment">// 因为当两者有一个 null 时候，这个循环也会在 null == null 结束，所以不用实现判断两链表是否为 null</span><br>        <span class="hljs-keyword">while</span> (pA != pB) &#123;<br>            pA = pA == <span class="hljs-literal">null</span> ? headB : pA.next;<br>            pB = pB == <span class="hljs-literal">null</span> ? headA : pB.next;<br>        &#125;<br>        <span class="hljs-keyword">return</span> pA;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>小结：</p>
+<ol>
+<li>对齐的思想，先找到两者差 gap，然后长的先出发 gap</li>
+<li>hash 表的思想，找相同的对象，可以先存一个表然后再比对</li>
+<li>加法交换律，利用 a + b &#x3D; b + a 对齐双指针</li>
+</ol>
+</li>
+</ul>
+<h2 id="2-链表反转"><a href="#2-链表反转" class="headerlink" title="2. 链表反转"></a>2. 链表反转</h2><ul>
+<li><p>题目：反转链表（lc206）</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>头插法，链表头不断拿点，不断在新链表头插入</li>
+<li>next 向指，从头开始将 next 指向反转，每次需要记录下一个节点后，再将下一个节点指向当前节点</li>
+<li>递归，当前节点后的链表递归反转，然后将当前节点连接到新的反转链表的末尾，注意递归函数返回的是反转后的链表头节点</li>
+</ol>
+</li>
+<li><p>题解：</p>
+<ol>
+<li><p>头插法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">ReverseList</span><span class="hljs-params">(ListNode head)</span> &#123;<br>    <span class="hljs-comment">//头插法，链表头不断拿点，不断在新链表头插入</span><br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">newHead</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>    <span class="hljs-keyword">while</span> (head != <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> head.next;<br>        head.next = newHead;<br>        newHead = head;<br>        head = temp;<br>    &#125;<br>    <span class="hljs-keyword">return</span> newHead;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>反转 next</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">reverseList</span><span class="hljs-params">(ListNode head)</span> &#123;<br>        <span class="hljs-comment">// next 向指，从头开始将 next 指向反转，每次需要记录下一个节点后，再将下一个节点指向当前节点</span><br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">prev</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">curr</span> <span class="hljs-operator">=</span> head;<br>        <span class="hljs-keyword">while</span> (curr != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-type">ListNode</span> <span class="hljs-variable">next</span> <span class="hljs-operator">=</span> curr.next;<br>            curr.next = prev;<br>            prev = curr;<br>            curr = next;<br>        &#125;<br>        <span class="hljs-keyword">return</span> prev;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>递归</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">reverseList</span><span class="hljs-params">(ListNode head)</span> &#123;<br>        <span class="hljs-comment">// 递归，当前节点后的链表递归反转，然后将当前节点连接到新的反转链表的末尾，注意递归函数返回的是反转后的链表头节点</span><br>        <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">null</span> || head.next == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span> head;<br>        &#125;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">newHead</span> <span class="hljs-operator">=</span> reverseList(head.next);<br>        head.next.next = head;<br>        head.next = <span class="hljs-literal">null</span>;<br>        <span class="hljs-keyword">return</span> newHead;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>小结：</p>
+<ol>
+<li>链表的题目需要注意改变 next 之前要存贮可能找不到的节点</li>
+<li>一般可以循环的代码，都可以用递归实现</li>
+<li>指向上一个节点的引用变量命名为 prev（previous），指向当前节点的引用变量命名为 curr（current）</li>
+</ol>
+</li>
+</ul>
+<h2 id="3-归并两个有序的链表"><a href="#3-归并两个有序的链表" class="headerlink" title="3. 归并两个有序的链表"></a>3. 归并两个有序的链表</h2><ul>
+<li><p>题目：两个有序链表合成一个有序链表（lc21）</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>迭代，两个链表头结点比较放入新链表，时间 O(m + n)，空间 O(1)</li>
+<li>递归，确定当前节点，剩余两链表递归归并，当前节点连接归并后链表，返回当前节点，时间 O(m +n)，空间 O(m + n)</li>
+</ol>
+</li>
+<li><p>题解：</p>
+<ol>
+<li><p>迭代</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">mergeTwoLists</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> &#123;<br>        <span class="hljs-comment">// 迭代，两个链表头结点比较放入新链表，时间 O(m + n)，空间 O(1)</span><br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">prehead</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>(-<span class="hljs-number">1</span>);<br><br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">prev</span> <span class="hljs-operator">=</span> prehead;<br>        <span class="hljs-keyword">while</span> (l1 != <span class="hljs-literal">null</span> &amp;&amp; l2 != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">if</span> (l1.val &lt;= l2.val) &#123;<br>                prev.next = l1;<br>                l1 = l1.next;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                prev.next = l2;<br>                l2 = l2.next;<br>            &#125;<br>            prev = prev.next;<br>        &#125;<br><br>        <span class="hljs-comment">// 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可</span><br>        prev.next = l1 == <span class="hljs-literal">null</span> ? l2 : l1;<br><br>        <span class="hljs-keyword">return</span> prehead.next;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>递归</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">mergeTwoLists</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> &#123;<br>        <span class="hljs-comment">// 递归，确定当前节点，剩余两链表递归归并，当前节点连接归并后链表，返回当前节点，时间 O(m +n)，空间 O(m + n)</span><br>        <span class="hljs-keyword">if</span> (l1 == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span> l2;<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (l2 == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span> l1;<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (l1.val &lt; l2.val) &#123;<br>            l1.next = mergeTwoLists(l1.next, l2);<br>            <span class="hljs-keyword">return</span> l1;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            l2.next = mergeTwoLists(l1, l2.next);<br>            <span class="hljs-keyword">return</span> l2;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>小结：</p>
+<ol>
+<li>递归解法写法简洁，但是可能空间效率上没有迭代解法优异</li>
+<li>剩余表连接的简洁写法：prev.next &#x3D; l1 &#x3D;&#x3D; null ? l2 : l1;</li>
+</ol>
+</li>
+</ul>
+<h2 id="4-从有序链表中删除重复节点"><a href="#4-从有序链表中删除重复节点" class="headerlink" title="4. 从有序链表中删除重复节点"></a>4. 从有序链表中删除重复节点</h2><ul>
+<li><p>题目：有序链表里删除重复的多余节点（lc83）有序链表里删除重复的所有节点（jz76）</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>遍历</li>
+<li>递归</li>
+</ol>
+</li>
+<li><p>题解：</p>
+<ol>
+<li><p>遍历</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">deleteDuplicates</span><span class="hljs-params">(ListNode head)</span> &#123;<br>        <span class="hljs-comment">// 遍历</span><br>        <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span> head;<br>        &#125;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">cur</span> <span class="hljs-operator">=</span> head;<br>        <span class="hljs-keyword">while</span> (cur.next != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">if</span> (cur.val == cur.next.val) &#123;<br>                cur.next = cur.next.next;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                cur = cur.next;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> head;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>递归</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">deleteDuplicates</span><span class="hljs-params">(ListNode head)</span> &#123;<br>    <span class="hljs-comment">// 递归</span><br>    <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">null</span> || head.next == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> head;<br>    head.next = deleteDuplicates(head.next);<br>    <span class="hljs-keyword">return</span> head.val == head.next.val ? head.next : head;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>小结：</p>
+<ol>
+<li>递归里简洁的返回达到判断并删除当前点目的 head.val &#x3D;&#x3D; head.next.val ? head.next : head;</li>
+</ol>
+</li>
+</ul>
+<h2 id="5-删除链表的倒数第-n-个节点"><a href="#5-删除链表的倒数第-n-个节点" class="headerlink" title="5. 删除链表的倒数第  n 个节点"></a>5. 删除链表的倒数第  n 个节点</h2><ul>
+<li><p>题目：删除链表的倒数第  n 个节点（lc19）</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>先遍历链表长度再计算需要删除的位置，遍历到删除，时间 O(L)，空间 O(1)</li>
+<li>入栈，弹出倒数第 n 个，时间 O(L)，空间 O(L)</li>
+<li>双指针，first 先遍历 n 个，然后一起遍历直到 first 到结尾，时间 O(L)，空间 O(1)</li>
+</ol>
+</li>
+<li><p>题解：</p>
+<ol>
+<li><p>事先遍历</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">removeNthFromEnd</span><span class="hljs-params">(ListNode head, <span class="hljs-type">int</span> n)</span> &#123;<br>        <span class="hljs-comment">// 先遍历链表长度再计算需要删除的位置，遍历到删除，时间 O(L)，空间 O(1)</span><br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">dummy</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>(<span class="hljs-number">0</span>, head);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">length</span> <span class="hljs-operator">=</span> getLength(head);<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">cur</span> <span class="hljs-operator">=</span> dummy;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt; length - n + <span class="hljs-number">1</span>; ++i) &#123;<br>            cur = cur.next;<br>        &#125;<br>        cur.next = cur.next.next;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">ans</span> <span class="hljs-operator">=</span> dummy.next;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getLength</span><span class="hljs-params">(ListNode head)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">length</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (head != <span class="hljs-literal">null</span>) &#123;<br>            ++length;<br>            head = head.next;<br>        &#125;<br>        <span class="hljs-keyword">return</span> length;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>栈</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">removeNthFromEnd</span><span class="hljs-params">(ListNode head, <span class="hljs-type">int</span> n)</span> &#123;<br>        <span class="hljs-comment">// 入栈，弹出倒数第 n 个，时间 O(L)，空间 O(L)</span><br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">dummy</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>(<span class="hljs-number">0</span>, head);<br>        Deque&lt;ListNode&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>&lt;ListNode&gt;();<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">cur</span> <span class="hljs-operator">=</span> dummy;<br>        <span class="hljs-keyword">while</span> (cur != <span class="hljs-literal">null</span>) &#123;<br>            stack.push(cur);<br>            cur = cur.next;<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; ++i) &#123;<br>            stack.pop();<br>        &#125;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">prev</span> <span class="hljs-operator">=</span> stack.peek();<br>        prev.next = prev.next.next;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">ans</span> <span class="hljs-operator">=</span> dummy.next;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>双指针</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">removeNthFromEnd</span><span class="hljs-params">(ListNode head, <span class="hljs-type">int</span> n)</span> &#123;<br>    <span class="hljs-comment">// 双指针，first 先遍历 n 个，然后一起遍历直到 first 到结尾，时间 O(L)，空间 O(1)</span><br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">fast</span> <span class="hljs-operator">=</span> head;<br>    <span class="hljs-keyword">while</span> (n-- &gt; <span class="hljs-number">0</span>) &#123;<br>        fast = fast.next;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (fast == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> head.next;<br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">slow</span> <span class="hljs-operator">=</span> head;<br>    <span class="hljs-keyword">while</span> (fast.next != <span class="hljs-literal">null</span>) &#123;<br>        fast = fast.next;<br>        slow = slow.next;<br>    &#125;<br>    slow.next = slow.next.next;<br>    <span class="hljs-keyword">return</span> head;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>小结：</p>
+<ol>
+<li>要养成对链表 ListNode dummy &#x3D; new ListNode(0, head); 的习惯</li>
+</ol>
+</li>
+</ul>
+<h2 id="6-交换链表中的相邻节点"><a href="#6-交换链表中的相邻节点" class="headerlink" title="6. 交换链表中的相邻节点"></a>6. 交换链表中的相邻节点</h2><ul>
+<li><p>题目：不修改值情况下，从头开始交换相邻两个节点（lc24）</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>递归，时间 O（n），空间 O（n）</li>
+<li>迭代，时间 O（n），空间 O（1）</li>
+</ol>
+</li>
+<li><p>题解：</p>
+<ol>
+<li><p>递归</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">swapPairs</span><span class="hljs-params">(ListNode head)</span> &#123;<br>        <span class="hljs-comment">// 递归，时间 O（n），空间 O（n）</span><br>        <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">null</span> || head.next == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span> head;<br>        &#125;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">newHead</span> <span class="hljs-operator">=</span> head.next;<br>        head.next = swapPairs(newHead.next);<br>        newHead.next = head;<br>        <span class="hljs-keyword">return</span> newHead;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>迭代</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">swapPairs</span><span class="hljs-params">(ListNode head)</span> &#123;<br>        <span class="hljs-comment">// 迭代，时间 O（n），空间 O（1）</span><br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">dummy</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>(-<span class="hljs-number">1</span>, head);<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">curr</span> <span class="hljs-operator">=</span> dummy;<br>        <span class="hljs-keyword">while</span> (curr.next != <span class="hljs-literal">null</span> &amp;&amp; curr.next.next != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-type">ListNode</span> <span class="hljs-variable">tmp</span> <span class="hljs-operator">=</span> curr.next.next.next;<br>            curr.next.next.next = curr.next;<br>            curr.next = curr.next.next;<br>            curr.next.next.next = tmp;<br>            curr = curr.next.next;<br>        &#125;<br>        <span class="hljs-keyword">return</span> dummy.next;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>小结：</p>
+<ol>
+<li>注意不要在 next 赋值过程中丢失对节点的引用</li>
+</ol>
+</li>
+</ul>
+<h2 id="7-链表求和"><a href="#7-链表求和" class="headerlink" title="7. 链表求和"></a>7. 链表求和</h2><ul>
+<li><p>题目：两个链表，分别表示一个数字，每一位数字是一个节点，求和的链表（lc445）</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>先分别将两个链表反转，然后从最低位开始求和，用一个 carry 存储进位的数字，时间 O（m + n），空间 O（1）</li>
+<li>两个链表都压栈然后计算，时间 O（m + n），空间 O（m + n）</li>
+</ol>
+</li>
+<li><p>题解：</p>
+<ol>
+<li><p>反转后求和</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">addTwoNumbers</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> &#123;<br>        <span class="hljs-comment">// 先分别将两个链表反转，然后从最低位开始求和，用一个 carry 存储进位的数字，时间 O（m + n），空间 O（1）</span><br>        l1 = reverseList(l1);<br>        l2 = reverseList(l2);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">carry</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">newHead</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-keyword">while</span> (l1 != <span class="hljs-literal">null</span> || l2 != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> l1 == <span class="hljs-literal">null</span> ? <span class="hljs-number">0</span> : l1.val;<br>            sum += l2 == <span class="hljs-literal">null</span> ? <span class="hljs-number">0</span> : l2.val;<br>            sum += carry;<br>            carry = sum / <span class="hljs-number">10</span>;<br>            newHead = newHead == <span class="hljs-literal">null</span> ? <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>(sum % <span class="hljs-number">10</span>) : <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>(sum % <span class="hljs-number">10</span>, newHead);<br>            l1 = l1 == <span class="hljs-literal">null</span> ? <span class="hljs-literal">null</span> : l1.next;<br>            l2 = l2 == <span class="hljs-literal">null</span> ? <span class="hljs-literal">null</span> : l2.next;<br>        &#125;<br>        newHead = carry == <span class="hljs-number">0</span> ? newHead : <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>(carry,newHead);<br>        <span class="hljs-keyword">return</span> newHead;<br>    &#125;<br>    <span class="hljs-keyword">private</span> ListNode <span class="hljs-title function_">reverseList</span> <span class="hljs-params">(ListNode l)</span> &#123;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">newHead</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-keyword">while</span> (l != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-type">ListNode</span> <span class="hljs-variable">tmp</span> <span class="hljs-operator">=</span> l.next;<br>            l.next = newHead;<br>            newHead = l;<br>            l = tmp;<br>        &#125;<br>        <span class="hljs-keyword">return</span> newHead;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>栈</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">addTwoNumbers</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> &#123;<br>        <span class="hljs-comment">// 两个链表都压栈然后计算，时间 O（m + n），空间 O（m + n）</span><br>        Deque&lt;Integer&gt; stack1 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>&lt;Integer&gt;();<br>        Deque&lt;Integer&gt; stack2 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>&lt;Integer&gt;();<br>        <span class="hljs-keyword">while</span> (l1 != <span class="hljs-literal">null</span>) &#123;<br>            stack1.push(l1.val);<br>            l1 = l1.next;<br>        &#125;<br>        <span class="hljs-keyword">while</span> (l2 != <span class="hljs-literal">null</span>) &#123;<br>            stack2.push(l2.val);<br>            l2 = l2.next;<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">carry</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">ans</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-keyword">while</span> (!stack1.isEmpty() || !stack2.isEmpty() || carry != <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> stack1.isEmpty() ? <span class="hljs-number">0</span> : stack1.pop();<br>            <span class="hljs-type">int</span> <span class="hljs-variable">b</span> <span class="hljs-operator">=</span> stack2.isEmpty() ? <span class="hljs-number">0</span> : stack2.pop();<br>            <span class="hljs-type">int</span> <span class="hljs-variable">cur</span> <span class="hljs-operator">=</span> a + b + carry;<br>            carry = cur / <span class="hljs-number">10</span>;<br>            cur %= <span class="hljs-number">10</span>;<br>            <span class="hljs-type">ListNode</span> <span class="hljs-variable">curnode</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>(cur);<br>            curnode.next = ans;<br>            ans = curnode;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>小结：</p>
+<ol>
+<li>反转链表不用 dummy，代码要熟练</li>
+<li>注意 || 和 &amp;&amp; 别用错</li>
+</ol>
+</li>
+</ul>
+<h2 id="8-回文链表"><a href="#8-回文链表" class="headerlink" title="8. 回文链表"></a>8. 回文链表</h2><ul>
+<li><p>题目：判断链表里元素是不是对称（lc234）</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>栈，遍历链表存栈后比对，时间 O（n），空间 O（n）</li>
+<li>切成两半，把后半段反转，然后比较两半是否相等，时间 O（n），空间 O（1）（需要改变链表）</li>
+</ol>
+</li>
+<li><p>题解：</p>
+<ol>
+<li><p>栈</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.*;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isPalindrome</span><span class="hljs-params">(ListNode head)</span> &#123;<br>        <span class="hljs-comment">// 栈，遍历链表存栈后比对，时间 O（n），空间 O（n）</span><br>        Deque&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>();<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">tmp</span> <span class="hljs-operator">=</span> head;<br>        <span class="hljs-keyword">while</span> (tmp != <span class="hljs-literal">null</span>) &#123;<br>            stack.push(tmp.val);<br>            tmp = tmp.next;<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">len</span> <span class="hljs-operator">=</span> stack.size() / <span class="hljs-number">2</span>;<br>        tmp = head;<br>        <span class="hljs-keyword">while</span> (len-- &gt; <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">if</span> (stack.pop() != tmp.val) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            tmp = tmp.next;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>切两半</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isPalindrome</span><span class="hljs-params">(ListNode head)</span> &#123;<br>    <span class="hljs-comment">// 切成两半，把后半段反转，然后比较两半是否相等，时间 O（n），空间 O（1）（需要改变链表）</span><br>    <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">null</span> || head.next == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">slow</span> <span class="hljs-operator">=</span> head, fast = head.next;<br>    <span class="hljs-keyword">while</span> (fast != <span class="hljs-literal">null</span> &amp;&amp; fast.next != <span class="hljs-literal">null</span>) &#123;<br>        slow = slow.next;<br>        fast = fast.next.next;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (fast != <span class="hljs-literal">null</span>) slow = slow.next;  <span class="hljs-comment">// 偶数节点，让 slow 指向下一个节点</span><br>    cut(head, slow);                     <span class="hljs-comment">// 切成两个链表</span><br>    <span class="hljs-keyword">return</span> isEqual(head, reverse(slow));<br>&#125;<br><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">cut</span><span class="hljs-params">(ListNode head, ListNode cutNode)</span> &#123;<br>    <span class="hljs-keyword">while</span> (head.next != cutNode) &#123;<br>        head = head.next;<br>    &#125;<br>    head.next = <span class="hljs-literal">null</span>;<br>&#125;<br><br><span class="hljs-keyword">private</span> ListNode <span class="hljs-title function_">reverse</span><span class="hljs-params">(ListNode head)</span> &#123;<br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">newHead</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>    <span class="hljs-keyword">while</span> (head != <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">nextNode</span> <span class="hljs-operator">=</span> head.next;<br>        head.next = newHead;<br>        newHead = head;<br>        head = nextNode;<br>    &#125;<br>    <span class="hljs-keyword">return</span> newHead;<br>&#125;<br><br><span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isEqual</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> &#123;<br>    <span class="hljs-keyword">while</span> (l1 != <span class="hljs-literal">null</span> &amp;&amp; l2 != <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-keyword">if</span> (l1.val != l2.val) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        l1 = l1.next;<br>        l2 = l2.next;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>小结：</p>
+<ol>
+<li>不要有思维定式，链表是可以截断的</li>
+<li>改变输入最好事先和面试官确认</li>
+</ol>
+</li>
+</ul>
+<h2 id="9-分隔链表"><a href="#9-分隔链表" class="headerlink" title="9. 分隔链表"></a>9. 分隔链表</h2><ul>
+<li><p>题目：链表被分割成 k 个链表，子链表长度差为 1，长的在前</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>拆分链表，用 % 和 &#x2F; 计算子链表长度，时间 O(n)， 空间 O(1)</li>
+</ol>
+</li>
+<li><p>题解：</p>
+<ol>
+<li><p>拆分链表</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> ListNode[] splitListToParts(ListNode root, <span class="hljs-type">int</span> k) &#123;<br>    <span class="hljs-comment">// 拆分链表，用 % 和 / 计算子链表长度，时间 O(n)， 空间 O(1)</span><br>    <span class="hljs-type">int</span> <span class="hljs-variable">N</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">cur</span> <span class="hljs-operator">=</span> root;<br>    <span class="hljs-keyword">while</span> (cur != <span class="hljs-literal">null</span>) &#123;<br>        N++;<br>        cur = cur.next;<br>    &#125;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">mod</span> <span class="hljs-operator">=</span> N % k;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">size</span> <span class="hljs-operator">=</span> N / k;<br>    ListNode[] ret = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>[k];<br>    cur = root;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; cur != <span class="hljs-literal">null</span> &amp;&amp; i &lt; k; i++) &#123;<br>        ret[i] = cur;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">curSize</span> <span class="hljs-operator">=</span> size + (mod-- &gt; <span class="hljs-number">0</span> ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; curSize - <span class="hljs-number">1</span>; j++) &#123;<br>            cur = cur.next;<br>        &#125;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">next</span> <span class="hljs-operator">=</span> cur.next;<br>        cur.next = <span class="hljs-literal">null</span>;<br>        cur = next;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ret;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>小结：</p>
+<ol>
+<li>学习代码 curSize &#x3D; size + (mod– &gt; 0 ? 1 : 0);</li>
+</ol>
+</li>
+</ul>
+<h2 id="10-链表元素按奇偶聚集"><a href="#10-链表元素按奇偶聚集" class="headerlink" title="10. 链表元素按奇偶聚集"></a>10. 链表元素按奇偶聚集</h2><ul>
+<li><p>题目：第奇数个放前，偶数个放后（lc328）</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>遍历同时链出两个链表最后再合并，时间 O（n），空间 O（1）</li>
+</ol>
+</li>
+<li><p>题解：</p>
+<ol>
+<li><p>遍历</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">oddEvenList</span><span class="hljs-params">(ListNode head)</span> &#123;<br>        <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span> head;<br>        &#125;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">evenHead</span> <span class="hljs-operator">=</span> head.next;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">odd</span> <span class="hljs-operator">=</span> head, even = evenHead;<br>        <span class="hljs-keyword">while</span> (even != <span class="hljs-literal">null</span> &amp;&amp; even.next != <span class="hljs-literal">null</span>) &#123;<br>            odd.next = even.next;<br>            odd = odd.next;<br>            even.next = odd.next;<br>            even = even.next;<br>        &#125;<br>        odd.next = evenHead;<br>        <span class="hljs-keyword">return</span> head;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>小结：</p>
+<ol>
+<li>注意动态链接时候存储可能找不到的节点</li>
+</ol>
+</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/CyC2018/CS-Notes/blob/master/notes/Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E9%93%BE%E8%A1%A8.md">CS-Notes&#x2F;Leetcode 题解 - 链表.md at master · CyC2018&#x2F;CS-Notes (github.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problemset/all/?page=1&sorting=W3t9XQ==&topicSlugs=linked-list">题库 - 力扣 (LeetCode) 全球极客挚爱的技术成长平台</a></li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A1%B9%E7%AE%97%E6%B3%95%E9%A2%98%E7%9B%AE/" class="category-chain-item">专项算法题目</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/algorithm/">#algorithm</a>
+      
+        <a href="/tags/data-structure/">#data structure</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>算法专项精选题 - 链表（一）</div>
+      <div>http://example.com/2022/06/13/算法/专项算法题目/algorithom1/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Handsom JOJO</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年6月13日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/11/Java%20%E7%AC%94%E8%AE%B0/JavaSE/Chapter1-Java%E5%9F%BA%E7%A1%80/" title="Chapter1 Java基础">
+                        <span class="hidden-mobile">Chapter1 Java基础</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
