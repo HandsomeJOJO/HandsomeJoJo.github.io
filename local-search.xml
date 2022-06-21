@@ -209,7 +209,7 @@
     <link href="/2022/06/10/Others/first-blog/"/>
     <url>/2022/06/10/Others/first-blog/</url>
     
-    <content type="html"><![CDATA[<p>这是张笑天搭建好博客后的第一篇博客。</p><h1 id="计划"><a href="#计划" class="headerlink" title="计划"></a>计划</h1><ul><li>该网站会更新软件开发相关的技术博客</li><li>包括但不限于：<ol><li>MySQL 基础与细节</li><li>Java 基础与细节</li><li>计算机网络相关知识</li><li>计算机组成原理相关知识</li><li>算法题目整理</li></ol></li><li>千里之行始于足下，共勉</li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="计划"><a href="#计划" class="headerlink" title="计划"></a>计划</h1><ul><li>该网站会更新 <code>Java 后端开发</code>相关的技术博客</li><li>包括但不限于：<ol><li>算法题目整理</li><li>Java 基础与细节</li><li>MySQL 基础与细节</li><li>Redis 基础与细节</li><li>计算机网络相关知识</li><li>操作系统相关知识</li><li>JVM 原理</li><li>Java 并发原理</li><li>Linux 常用命令及原理</li><li>设计模式</li><li>SSM 框架使用细节与原理</li><li>Java 项目开发文档</li></ol></li><li>千里之行始于足下，共勉</li></ul>]]></content>
     
     
     <categories>
