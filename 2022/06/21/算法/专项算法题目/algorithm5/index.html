@@ -1,0 +1,948 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Handsom JOJO">
+  <meta name="keywords" content="java, algorithm, blog">
+  
+    <meta name="description" content="树相关算法题目精选，典中典">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法专项精选题 - 树（三）">
+<meta property="og:url" content="http://example.com/2022/06/21/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A1%B9%E7%AE%97%E6%B3%95%E9%A2%98%E7%9B%AE/algorithm5/index.html">
+<meta property="og:site_name" content="幸福的西西弗斯">
+<meta property="og:description" content="树相关算法题目精选，典中典">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/index/algorithm.png">
+<meta property="article:published_time" content="2022-06-21T05:42:00.000Z">
+<meta property="article:modified_time" content="2022-06-21T06:03:02.355Z">
+<meta property="article:author" content="Handsom JOJO">
+<meta property="article:tag" content="algorithm">
+<meta property="article:tag" content="data structure">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/algorithm.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>算法专项精选题 - 树（三） - 幸福的西西弗斯</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.1","typing":{"enable":true,"typeSpeed":90,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Handsome JOJO</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/banner/algorithm.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="算法专项精选题 - 树（三）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-21 13:42" pubdate>
+          2022年6月21日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          19k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          159 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">算法专项精选题 - 树（三）</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="树（三）"><a href="#树（三）" class="headerlink" title="树（三）"></a>树（三）</h1><h2 id="21-BST2-寻找二叉查找树第-k-个元素"><a href="#21-BST2-寻找二叉查找树第-k-个元素" class="headerlink" title="21. BST2 寻找二叉查找树第 k 个元素"></a>21. BST2 寻找二叉查找树第 k 个元素</h2><ul>
+<li><p>题目：返回 BST 中第 k 小大的元素（lc230）</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>中序遍历，时间 O（n），空间 O（n）</li>
+<li>迭代计算子树节点数，左子树节点数为 k-1 时返回当前节点，时间 O（n），空间 O（n）</li>
+<li>如果二叉搜索树经常被修改（插入&#x2F;删除操作）并且你需要频繁地查找第 k 小的值，就将 BST 转化成 AVL 树，时间 O（n），空间 O（n）</li>
+</ol>
+</li>
+<li><p>题解：</p>
+<ol>
+<li><p>中序遍历</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">kthSmallest</span><span class="hljs-params">(TreeNode root, <span class="hljs-type">int</span> k)</span> &#123;<br>        <span class="hljs-comment">// 中序遍历，时间 O（n），空间 O（n）</span><br>        Deque&lt;TreeNode&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayDeque</span>&lt;TreeNode&gt;();<br>        <span class="hljs-keyword">while</span> (root != <span class="hljs-literal">null</span> || !stack.isEmpty()) &#123;<br>            <span class="hljs-keyword">while</span> (root != <span class="hljs-literal">null</span>) &#123;<br>                stack.push(root);<br>                root = root.left;<br>            &#125;<br>            root = stack.pop();<br>            --k;<br>            <span class="hljs-keyword">if</span> (k == <span class="hljs-number">0</span>) &#123;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>            root = root.right;<br>        &#125;<br>        <span class="hljs-keyword">return</span> root.val;<br>    &#125;<br>    <br>    <span class="hljs-comment">// 递归代码</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-variable">cnt</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> val;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">kthSmallest</span><span class="hljs-params">(TreeNode root, <span class="hljs-type">int</span> k)</span> &#123;<br>        inOrder(root, k);<br>        <span class="hljs-keyword">return</span> val;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">inOrder</span><span class="hljs-params">(TreeNode node, <span class="hljs-type">int</span> k)</span> &#123;<br>        <span class="hljs-keyword">if</span> (node == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span>;<br>        inOrder(node.left, k);<br>        cnt++;<br>        <span class="hljs-keyword">if</span> (cnt == k) &#123;<br>            val = node.val;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        inOrder(node.right, k);<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>计算子树节点数目</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-comment">// 迭代计算子树节点数，左子树节点数为 k-1 时返回当前节点，时间 O（n），空间 O（n）</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">kthSmallest</span><span class="hljs-params">(TreeNode root, <span class="hljs-type">int</span> k)</span> &#123;<br>        <span class="hljs-type">MyBst</span> <span class="hljs-variable">bst</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MyBst</span>(root);<br>        <span class="hljs-keyword">return</span> bst.kthSmallest(k);<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyBst</span> &#123;<br>    TreeNode root;<br>    Map&lt;TreeNode, Integer&gt; nodeNum;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">MyBst</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>        <span class="hljs-built_in">this</span>.root = root;<br>        <span class="hljs-built_in">this</span>.nodeNum = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;TreeNode, Integer&gt;();<br>        countNodeNum(root);<br>    &#125;<br><br>    <span class="hljs-comment">// 返回二叉搜索树中第k小的元素</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">kthSmallest</span><span class="hljs-params">(<span class="hljs-type">int</span> k)</span> &#123;<br>        <span class="hljs-type">TreeNode</span> <span class="hljs-variable">node</span> <span class="hljs-operator">=</span> root;<br>        <span class="hljs-keyword">while</span> (node != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> getNodeNum(node.left);<br>            <span class="hljs-keyword">if</span> (left &lt; k - <span class="hljs-number">1</span>) &#123;<br>                node = node.right;<br>                k -= left + <span class="hljs-number">1</span>;<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (left == k - <span class="hljs-number">1</span>) &#123;<br>                <span class="hljs-keyword">break</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                node = node.left;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> node.val;<br>    &#125;<br><br>    <span class="hljs-comment">// 统计以node为根结点的子树的结点数</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-title function_">countNodeNum</span><span class="hljs-params">(TreeNode node)</span> &#123;<br>        <span class="hljs-keyword">if</span> (node == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        &#125;<br>        nodeNum.put(node, <span class="hljs-number">1</span> + countNodeNum(node.left) + countNodeNum(node.right));<br>        <span class="hljs-keyword">return</span> nodeNum.get(node);<br>    &#125;<br><br>    <span class="hljs-comment">// 获取以node为根结点的子树的结点数</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getNodeNum</span><span class="hljs-params">(TreeNode node)</span> &#123;<br>        <span class="hljs-keyword">return</span> nodeNum.getOrDefault(node, <span class="hljs-number">0</span>);<br>    &#125;<br>    <br>    <span class="hljs-comment">// 简洁写法</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">kthSmallest</span><span class="hljs-params">(TreeNode root, <span class="hljs-type">int</span> k)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">leftCnt</span> <span class="hljs-operator">=</span> count(root.left);<br>        <span class="hljs-keyword">if</span> (leftCnt == k - <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> root.val;<br>        <span class="hljs-keyword">if</span> (leftCnt &gt; k - <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> kthSmallest(root.left, k);<br>        <span class="hljs-keyword">return</span> kthSmallest(root.right, k - leftCnt - <span class="hljs-number">1</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-title function_">count</span><span class="hljs-params">(TreeNode node)</span> &#123;<br>        <span class="hljs-keyword">if</span> (node == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> + count(node.left) + count(node.right);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>转 AVL 树</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-comment">// 如果二叉搜索树经常被修改（插入/删除操作）并且你需要频繁地查找第 k 小的值，就将 BST 转化成 AVL 树，时间 O（n），空间 O（n）</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">kthSmallest</span><span class="hljs-params">(TreeNode root, <span class="hljs-type">int</span> k)</span> &#123;<br>        <span class="hljs-comment">// 中序遍历生成数值列表</span><br>        List&lt;Integer&gt; inorderList = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Integer&gt;();<br>        inorder(root, inorderList);<br><br>        <span class="hljs-comment">// 构造平衡二叉搜索树</span><br>        <span class="hljs-type">AVL</span> <span class="hljs-variable">avl</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">AVL</span>(inorderList);<br><br>        <span class="hljs-comment">// 模拟1000次插入和删除操作</span><br>        <span class="hljs-type">int</span>[] randomNums = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">1000</span>];<br>        <span class="hljs-type">Random</span> <span class="hljs-variable">random</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Random</span>();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">1000</span>; ++i) &#123;<br>            randomNums[i] = random.nextInt(<span class="hljs-number">10001</span>);<br>            avl.insert(randomNums[i]);<br>        &#125;<br>        shuffle(randomNums); <span class="hljs-comment">// 列表乱序</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">1000</span>; ++i) &#123;<br>            avl.delete(randomNums[i]);<br>        &#125;<br><br>        <span class="hljs-keyword">return</span> avl.kthSmallest(k);<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">inorder</span><span class="hljs-params">(TreeNode node, List&lt;Integer&gt; inorderList)</span> &#123;<br>        <span class="hljs-keyword">if</span> (node.left != <span class="hljs-literal">null</span>) &#123;<br>            inorder(node.left, inorderList);<br>        &#125;<br>        inorderList.add(node.val);<br>        <span class="hljs-keyword">if</span> (node.right != <span class="hljs-literal">null</span>) &#123;<br>            inorder(node.right, inorderList);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">shuffle</span><span class="hljs-params">(<span class="hljs-type">int</span>[] arr)</span> &#123;<br>        <span class="hljs-type">Random</span> <span class="hljs-variable">random</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Random</span>();<br>        <span class="hljs-type">int</span> <span class="hljs-variable">length</span> <span class="hljs-operator">=</span> arr.length;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; length; i++) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">randIndex</span> <span class="hljs-operator">=</span> random.nextInt(length);<br>            <span class="hljs-type">int</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> arr[i];<br>            arr[i] = arr[randIndex];<br>            arr[randIndex] = temp;<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 平衡二叉搜索树（AVL树）：允许重复值</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">AVL</span> &#123;<br>    Node root;<br><br>    <span class="hljs-comment">// 平衡二叉搜索树结点</span><br>    <span class="hljs-keyword">class</span> <span class="hljs-title class_">Node</span> &#123;<br>        <span class="hljs-type">int</span> val;<br>        Node parent;<br>        Node left;<br>        Node right;<br>        <span class="hljs-type">int</span> size;<br>        <span class="hljs-type">int</span> height;<br><br>        <span class="hljs-keyword">public</span> <span class="hljs-title function_">Node</span><span class="hljs-params">(<span class="hljs-type">int</span> val)</span> &#123;<br>            <span class="hljs-built_in">this</span>(val, <span class="hljs-literal">null</span>);<br>        &#125;<br><br>        <span class="hljs-keyword">public</span> <span class="hljs-title function_">Node</span><span class="hljs-params">(<span class="hljs-type">int</span> val, Node parent)</span> &#123;<br>            <span class="hljs-built_in">this</span>(val, parent, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>);<br>        &#125;<br><br>        <span class="hljs-keyword">public</span> <span class="hljs-title function_">Node</span><span class="hljs-params">(<span class="hljs-type">int</span> val, Node parent, Node left, Node right)</span> &#123;<br>            <span class="hljs-built_in">this</span>.val = val;<br>            <span class="hljs-built_in">this</span>.parent = parent;<br>            <span class="hljs-built_in">this</span>.left = left;<br>            <span class="hljs-built_in">this</span>.right = right;<br>            <span class="hljs-built_in">this</span>.height = <span class="hljs-number">0</span>; <span class="hljs-comment">// 结点高度：以node为根节点的子树的高度（高度定义：叶结点的高度是0）</span><br>            <span class="hljs-built_in">this</span>.size = <span class="hljs-number">1</span>; <span class="hljs-comment">// 结点元素数：以node为根节点的子树的节点总数</span><br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">AVL</span><span class="hljs-params">(List&lt;Integer&gt; vals)</span> &#123;<br>        <span class="hljs-keyword">if</span> (vals != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-built_in">this</span>.root = build(vals, <span class="hljs-number">0</span>, vals.size() - <span class="hljs-number">1</span>, <span class="hljs-literal">null</span>);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">// 根据vals[l:r]构造平衡二叉搜索树 -&gt; 返回根结点</span><br>    <span class="hljs-keyword">private</span> Node <span class="hljs-title function_">build</span><span class="hljs-params">(List&lt;Integer&gt; vals, <span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r, Node parent)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">m</span> <span class="hljs-operator">=</span> (l + r) &gt;&gt; <span class="hljs-number">1</span>;<br>        <span class="hljs-type">Node</span> <span class="hljs-variable">node</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Node</span>(vals.get(m), parent);<br>        <span class="hljs-keyword">if</span> (l &lt;= m - <span class="hljs-number">1</span>) &#123;<br>            node.left = build(vals, l, m - <span class="hljs-number">1</span>, node);<br>        &#125;<br>        <span class="hljs-keyword">if</span> (m + <span class="hljs-number">1</span> &lt;= r) &#123;<br>            node.right = build(vals, m + <span class="hljs-number">1</span>, r, node);<br>        &#125;<br>        recompute(node);<br>        <span class="hljs-keyword">return</span> node;<br>    &#125;<br><br>    <span class="hljs-comment">// 返回二叉搜索树中第k小的元素</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">kthSmallest</span><span class="hljs-params">(<span class="hljs-type">int</span> k)</span> &#123;<br>        <span class="hljs-type">Node</span> <span class="hljs-variable">node</span> <span class="hljs-operator">=</span> root;<br>        <span class="hljs-keyword">while</span> (node != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> getSize(node.left);<br>            <span class="hljs-keyword">if</span> (left &lt; k - <span class="hljs-number">1</span>) &#123;<br>                node = node.right;<br>                k -= left + <span class="hljs-number">1</span>;<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (left == k - <span class="hljs-number">1</span>) &#123;<br>                <span class="hljs-keyword">break</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                node = node.left;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> node.val;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insert</span><span class="hljs-params">(<span class="hljs-type">int</span> v)</span> &#123;<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span>) &#123;<br>            root = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Node</span>(v);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-comment">// 计算新结点的添加位置</span><br>            <span class="hljs-type">Node</span> <span class="hljs-variable">node</span> <span class="hljs-operator">=</span> subtreeSearch(root, v);<br>            <span class="hljs-type">boolean</span> <span class="hljs-variable">isAddLeft</span> <span class="hljs-operator">=</span> v &lt;= node.val; <span class="hljs-comment">// 是否将新结点添加到node的左子结点</span><br>            <span class="hljs-keyword">if</span> (node.val == v) &#123; <span class="hljs-comment">// 如果值为v的结点已存在</span><br>                <span class="hljs-keyword">if</span> (node.left != <span class="hljs-literal">null</span>) &#123; <span class="hljs-comment">// 值为v的结点存在左子结点，则添加到其左子树的最右侧</span><br>                    node = subtreeLast(node.left);<br>                    isAddLeft = <span class="hljs-literal">false</span>;<br>                &#125; <span class="hljs-keyword">else</span> &#123; <span class="hljs-comment">// 值为v的结点不存在左子结点，则添加到其左子结点</span><br>                    isAddLeft = <span class="hljs-literal">true</span>;<br>                &#125;<br>            &#125;<br><br>            <span class="hljs-comment">// 添加新结点</span><br>            <span class="hljs-type">Node</span> <span class="hljs-variable">leaf</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Node</span>(v, node);<br>            <span class="hljs-keyword">if</span> (isAddLeft) &#123;<br>                node.left = leaf;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                node.right = leaf;<br>            &#125;<br><br>            rebalance(leaf);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">// 删除值为v的结点 -&gt; 返回是否成功删除结点</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">delete</span><span class="hljs-params">(<span class="hljs-type">int</span> v)</span> &#123;<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br><br>        <span class="hljs-type">Node</span> <span class="hljs-variable">node</span> <span class="hljs-operator">=</span> subtreeSearch(root, v);<br>        <span class="hljs-keyword">if</span> (node.val != v) &#123; <span class="hljs-comment">// 没有找到需要删除的结点</span><br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br><br>        <span class="hljs-comment">// 处理当前结点既有左子树也有右子树的情况</span><br>        <span class="hljs-comment">// 若左子树比右子树高度低，则将当前结点替换为右子树最左侧的结点，并移除右子树最左侧的结点</span><br>        <span class="hljs-comment">// 若右子树比左子树高度低，则将当前结点替换为左子树最右侧的结点，并移除左子树最右侧的结点</span><br>        <span class="hljs-keyword">if</span> (node.left != <span class="hljs-literal">null</span> &amp;&amp; node.right != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-type">Node</span> <span class="hljs-variable">replacement</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>            <span class="hljs-keyword">if</span> (node.left.height &lt;= node.right.height) &#123;<br>                replacement = subtreeFirst(node.right);<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                replacement = subtreeLast(node.left);<br>            &#125;<br>            node.val = replacement.val;<br>            node = replacement;<br>        &#125;<br><br>        <span class="hljs-type">Node</span> <span class="hljs-variable">parent</span> <span class="hljs-operator">=</span> node.parent;<br>        delete(node);<br>        rebalance(parent);<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 删除结点p并用它的子结点代替它，结点p至多只能有1个子结点</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">delete</span><span class="hljs-params">(Node node)</span> &#123;<br>        <span class="hljs-keyword">if</span> (node.left != <span class="hljs-literal">null</span> &amp;&amp; node.right != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span>;<br>            <span class="hljs-comment">// throw new Exception(&quot;Node has two children&quot;);</span><br>        &#125;<br>        <span class="hljs-type">Node</span> <span class="hljs-variable">child</span> <span class="hljs-operator">=</span> node.left != <span class="hljs-literal">null</span> ? node.left : node.right;<br>        <span class="hljs-keyword">if</span> (child != <span class="hljs-literal">null</span>) &#123;<br>            child.parent = node.parent;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (node == root) &#123;<br>            root = child;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-type">Node</span> <span class="hljs-variable">parent</span> <span class="hljs-operator">=</span> node.parent;<br>            <span class="hljs-keyword">if</span> (node == parent.left) &#123;<br>                parent.left = child;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                parent.right = child;<br>            &#125;<br>        &#125;<br>        node.parent = node;<br>    &#125;<br><br>    <span class="hljs-comment">// 在以node为根结点的子树中搜索值为v的结点，如果没有值为v的结点，则返回值为v的结点应该在的位置的父结点</span><br>    <span class="hljs-keyword">private</span> Node <span class="hljs-title function_">subtreeSearch</span><span class="hljs-params">(Node node, <span class="hljs-type">int</span> v)</span> &#123;<br>        <span class="hljs-keyword">if</span> (node.val &lt; v &amp;&amp; node.right != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span> subtreeSearch(node.right, v);<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (node.val &gt; v &amp;&amp; node.left != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span> subtreeSearch(node.left, v);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">return</span> node;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">// 重新计算node结点的高度和元素数</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">recompute</span><span class="hljs-params">(Node node)</span> &#123;<br>        node.height = <span class="hljs-number">1</span> + Math.max(getHeight(node.left), getHeight(node.right));<br>        node.size = <span class="hljs-number">1</span> + getSize(node.left) + getSize(node.right);<br>    &#125;<br><br>    <span class="hljs-comment">// 从node结点开始（含node结点）逐个向上重新平衡二叉树，并更新结点高度和元素数</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">rebalance</span><span class="hljs-params">(Node node)</span> &#123;<br>        <span class="hljs-keyword">while</span> (node != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">oldHeight</span> <span class="hljs-operator">=</span> node.height, oldSize = node.size;<br>            <span class="hljs-keyword">if</span> (!isBalanced(node)) &#123;<br>                node = restructure(tallGrandchild(node));<br>                recompute(node.left);<br>                recompute(node.right);<br>            &#125;<br>            recompute(node);<br>            <span class="hljs-keyword">if</span> (node.height == oldHeight &amp;&amp; node.size == oldSize) &#123;<br>                node = <span class="hljs-literal">null</span>; <span class="hljs-comment">// 如果结点高度和元素数都没有变化则不需要再继续向上调整</span><br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                node = node.parent;<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">// 判断node结点是否平衡</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isBalanced</span><span class="hljs-params">(Node node)</span> &#123;<br>        <span class="hljs-keyword">return</span> Math.abs(getHeight(node.left) - getHeight(node.right)) &lt;= <span class="hljs-number">1</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 获取node结点更高的子树</span><br>    <span class="hljs-keyword">private</span> Node <span class="hljs-title function_">tallChild</span><span class="hljs-params">(Node node)</span> &#123;<br>        <span class="hljs-keyword">if</span> (getHeight(node.left) &gt; getHeight(node.right)) &#123;<br>            <span class="hljs-keyword">return</span> node.left;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">return</span> node.right;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">// 获取node结点更高的子树中的更高的子树</span><br>    <span class="hljs-keyword">private</span> Node <span class="hljs-title function_">tallGrandchild</span><span class="hljs-params">(Node node)</span> &#123;<br>        <span class="hljs-type">Node</span> <span class="hljs-variable">child</span> <span class="hljs-operator">=</span> tallChild(node);<br>        <span class="hljs-keyword">return</span> tallChild(child);<br>    &#125;<br><br>    <span class="hljs-comment">// 重新连接父结点和子结点（子结点允许为空）</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">relink</span><span class="hljs-params">(Node parent, Node child, <span class="hljs-type">boolean</span> isLeft)</span> &#123;<br>        <span class="hljs-keyword">if</span> (isLeft) &#123;<br>            parent.left = child;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            parent.right = child;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (child != <span class="hljs-literal">null</span>) &#123;<br>            child.parent = parent;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">// 旋转操作</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">rotate</span><span class="hljs-params">(Node node)</span> &#123;<br>        <span class="hljs-type">Node</span> <span class="hljs-variable">parent</span> <span class="hljs-operator">=</span> node.parent;<br>        <span class="hljs-type">Node</span> <span class="hljs-variable">grandparent</span> <span class="hljs-operator">=</span> parent.parent;<br>        <span class="hljs-keyword">if</span> (grandparent == <span class="hljs-literal">null</span>) &#123;<br>            root = node;<br>            node.parent = <span class="hljs-literal">null</span>;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            relink(grandparent, node, parent == grandparent.left);<br>        &#125;<br><br>        <span class="hljs-keyword">if</span> (node == parent.left) &#123;<br>            relink(parent, node.right, <span class="hljs-literal">true</span>);<br>            relink(node, parent, <span class="hljs-literal">false</span>);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            relink(parent, node.left, <span class="hljs-literal">false</span>);<br>            relink(node, parent, <span class="hljs-literal">true</span>);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">// trinode操作</span><br>    <span class="hljs-keyword">private</span> Node <span class="hljs-title function_">restructure</span><span class="hljs-params">(Node node)</span> &#123;<br>        <span class="hljs-type">Node</span> <span class="hljs-variable">parent</span> <span class="hljs-operator">=</span> node.parent;<br>        <span class="hljs-type">Node</span> <span class="hljs-variable">grandparent</span> <span class="hljs-operator">=</span> parent.parent;<br><br>        <span class="hljs-keyword">if</span> ((node == parent.right) == (parent == grandparent.right)) &#123; <span class="hljs-comment">// 处理需要一次旋转的情况</span><br>            rotate(parent);<br>            <span class="hljs-keyword">return</span> parent;<br>        &#125; <span class="hljs-keyword">else</span> &#123; <span class="hljs-comment">// 处理需要两次旋转的情况：第1次旋转后即成为需要一次旋转的情况</span><br>            rotate(node);<br>            rotate(node);<br>            <span class="hljs-keyword">return</span> node;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">// 返回以node为根结点的子树的第1个元素</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Node <span class="hljs-title function_">subtreeFirst</span><span class="hljs-params">(Node node)</span> &#123;<br>        <span class="hljs-keyword">while</span> (node.left != <span class="hljs-literal">null</span>) &#123;<br>            node = node.left;<br>        &#125;<br>        <span class="hljs-keyword">return</span> node;<br>    &#125;<br><br>    <span class="hljs-comment">// 返回以node为根结点的子树的最后1个元素</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Node <span class="hljs-title function_">subtreeLast</span><span class="hljs-params">(Node node)</span> &#123;<br>        <span class="hljs-keyword">while</span> (node.right != <span class="hljs-literal">null</span>) &#123;<br>            node = node.right;<br>        &#125;<br>        <span class="hljs-keyword">return</span> node;<br>    &#125;<br><br>    <span class="hljs-comment">// 获取以node为根结点的子树的高度</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getHeight</span><span class="hljs-params">(Node node)</span> &#123;<br>        <span class="hljs-keyword">return</span> node != <span class="hljs-literal">null</span> ? node.height : <span class="hljs-number">0</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 获取以node为根结点的子树的结点数</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getSize</span><span class="hljs-params">(Node node)</span> &#123;<br>        <span class="hljs-keyword">return</span> node != <span class="hljs-literal">null</span> ? node.size : <span class="hljs-number">0</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>小结：</p>
+<ol>
+<li>BST 左子树节点数个数就是树中比当前节点小的节点数个数</li>
+<li>转 ALV 树的代码真猛啊</li>
+</ol>
+</li>
+</ul>
+<h2 id="22-BST3-BST-每个节点值加比它大的节点值"><a href="#22-BST3-BST-每个节点值加比它大的节点值" class="headerlink" title="22. BST3 BST 每个节点值加比它大的节点值"></a>22. BST3 BST 每个节点值加比它大的节点值</h2><ul>
+<li><p>题目：BST 每个节点值加比它大的节点值（lc538）</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>反序中序遍历，时间 O（n），空间 O（n）</li>
+</ol>
+</li>
+<li><p>题解：</p>
+<ol>
+<li><p>先右后左的中序遍历</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">public</span> TreeNode <span class="hljs-title function_">convertBST</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>        convertBST(root.right);<br>        root.val += sum;<br>        sum = root.val;<br>        convertBST(root.left);<br>        <span class="hljs-keyword">return</span> root;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>小结：</p>
+<ol>
+<li>反序小技巧</li>
+</ol>
+</li>
+</ul>
+<h2 id="23-BST4-BST-最近公共祖先"><a href="#23-BST4-BST-最近公共祖先" class="headerlink" title="23. BST4 BST 最近公共祖先"></a>23. BST4 BST 最近公共祖先</h2><ul>
+<li><p>题目：找 BST 最近公共祖先（lc235）</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>DFS 找到第一个落在两点值区间内的节点，时间 O（n），空间 O（n）</li>
+</ol>
+</li>
+<li><p>题解：</p>
+<ol>
+<li><p>递归</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title function_">lowestCommonAncestor</span><span class="hljs-params">(TreeNode root, TreeNode p, TreeNode q)</span> &#123;<br>    <span class="hljs-comment">// DFS 找到第一个落在两点值区间内的节点，时间 O（n），空间 O（n）</span><br>    <span class="hljs-keyword">if</span> (root.val &gt; p.val &amp;&amp; root.val &gt; q.val) <span class="hljs-keyword">return</span> lowestCommonAncestor(root.left, p, q);<br>    <span class="hljs-keyword">if</span> (root.val &lt; p.val &amp;&amp; root.val &lt; q.val) <span class="hljs-keyword">return</span> lowestCommonAncestor(root.right, p, q);<br>    <span class="hljs-keyword">return</span> root;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>小结：</p>
+<ol>
+<li>BST 本身具有性质，最近公共祖先值一定落在两节点值间</li>
+</ol>
+</li>
+</ul>
+<h2 id="24-BST5-二叉树最近公共祖先"><a href="#24-BST5-二叉树最近公共祖先" class="headerlink" title="24. BST5 二叉树最近公共祖先"></a>24. BST5 二叉树最近公共祖先</h2><ul>
+<li><p>题目：求二叉树最近公共祖先（lc236）</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>DFS，当左右子树分别有 p 和 q 时候当前节点为解，时间 O（n），空间 O（n）</li>
+</ol>
+</li>
+<li><p>题解：</p>
+<ol>
+<li><p>递归</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title function_">lowestCommonAncestor</span><span class="hljs-params">(TreeNode root, TreeNode p, TreeNode q)</span> &#123;<br>    <span class="hljs-comment">// DFS，当左右子树分别有 p 和 q 时候当前节点为解，时间 O（n），空间 O（n）</span><br>    <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span> || root == p || root == q) <span class="hljs-keyword">return</span> root;<br>    <span class="hljs-type">TreeNode</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> lowestCommonAncestor(root.left, p, q);<br>    <span class="hljs-type">TreeNode</span> <span class="hljs-variable">right</span> <span class="hljs-operator">=</span> lowestCommonAncestor(root.right, p, q);<br>    <span class="hljs-type">return</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span>= <span class="hljs-literal">null</span> ? right : right == <span class="hljs-literal">null</span> ? left : root;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>小结：</p>
+<ol>
+<li>如果左右子树分别有 p 或 q，则当前节点是 p 和 q 的最近公共节点</li>
+</ol>
+</li>
+</ul>
+<h2 id="25-BST6-从有序数组中构造二叉查找树"><a href="#25-BST6-从有序数组中构造二叉查找树" class="headerlink" title="25. BST6 从有序数组中构造二叉查找树"></a>25. BST6 从有序数组中构造二叉查找树</h2><ul>
+<li><p>题目：将有序数据构造成 BST，而且平衡（lc108）</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>就不断的从中点构造，时间 O（n），空间 O（logn）</li>
+</ol>
+</li>
+<li><p>题解：</p>
+<ol>
+<li><p>递归</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title function_">sortedArrayToBST</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums)</span> &#123;<br>    <span class="hljs-keyword">return</span> toBST(nums, <span class="hljs-number">0</span>, nums.length - <span class="hljs-number">1</span>);<br>&#125;<br><br><span class="hljs-keyword">private</span> TreeNode <span class="hljs-title function_">toBST</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> sIdx, <span class="hljs-type">int</span> eIdx)</span>&#123;<br>    <span class="hljs-keyword">if</span> (sIdx &gt; eIdx) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">mIdx</span> <span class="hljs-operator">=</span> (sIdx + eIdx) / <span class="hljs-number">2</span>;<br>    <span class="hljs-type">TreeNode</span> <span class="hljs-variable">root</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TreeNode</span>(nums[mIdx]);<br>    root.left =  toBST(nums, sIdx, mIdx - <span class="hljs-number">1</span>);<br>    root.right = toBST(nums, mIdx + <span class="hljs-number">1</span>, eIdx);<br>    <span class="hljs-keyword">return</span> root;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>小结：</p>
+<ol>
+<li>这种取中点的，边界条件不用判断相等，判断 left &gt; right 就好</li>
+</ol>
+</li>
+</ul>
+<h2 id="26-BST7-根据有序链表构造平衡-BST"><a href="#26-BST7-根据有序链表构造平衡-BST" class="headerlink" title="26. BST7 根据有序链表构造平衡 BST"></a>26. BST7 根据有序链表构造平衡 BST</h2><ul>
+<li><p>题目：将有序链表造成 BST，而且平衡（lc109）</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>迭代的找链表中点构造，时间 O（nlogn），空间 O（logn）</li>
+<li>分治加中序遍历优化，由于构造出的树的中序遍历就是链表本身，可以先不填构造出的节点的值，左树搞定以后再将链表访问到的当前元素放到节点值，后移，时间 O（n），空间 O（logn）</li>
+</ol>
+</li>
+<li><p>题解：</p>
+<ol>
+<li><p>递归</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> TreeNode <span class="hljs-title function_">sortedListToBST</span><span class="hljs-params">(ListNode head)</span> &#123;<br>        <span class="hljs-comment">// 迭代的找链表中点构造，时间 O（nlogn），空间 O（n）</span><br>        <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-keyword">if</span> (head.next == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TreeNode</span>(head.val);<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">fast</span> <span class="hljs-operator">=</span> head.next, slow = head;<br>        <span class="hljs-keyword">while</span> (fast.next != <span class="hljs-literal">null</span> &amp;&amp; fast.next.next != <span class="hljs-literal">null</span>) &#123;<br>            fast = fast.next.next;<br>            slow = slow.next;<br>        &#125;<br>        <span class="hljs-type">TreeNode</span> <span class="hljs-variable">root</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TreeNode</span>(slow.next.val);<br>        root.right = sortedListToBST(slow.next.next);<br>        slow.next = <span class="hljs-literal">null</span>;<br>        root.left = sortedListToBST(head);<br>        <span class="hljs-keyword">return</span> root;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>递归优化</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-comment">// 分治加中序遍历优化，由于构造出的树的中序遍历就是链表本身，可以先不填构造出的节点的值，左树搞定以后再将链表访问到的当前元素放到节点值，后移，时间 O（n），空间 O（logn）</span><br>    ListNode globalHead;<br><br>    <span class="hljs-keyword">public</span> TreeNode <span class="hljs-title function_">sortedListToBST</span><span class="hljs-params">(ListNode head)</span> &#123;<br>        globalHead = head;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">length</span> <span class="hljs-operator">=</span> getLength(head);<br>        <span class="hljs-keyword">return</span> buildTree(<span class="hljs-number">0</span>, length - <span class="hljs-number">1</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getLength</span><span class="hljs-params">(ListNode head)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">ret</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (head != <span class="hljs-literal">null</span>) &#123;<br>            ++ret;<br>            head = head.next;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ret;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> TreeNode <span class="hljs-title function_">buildTree</span><span class="hljs-params">(<span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right)</span> &#123;<br>        <span class="hljs-keyword">if</span> (left &gt; right) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> (left + right + <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>;<br>        <span class="hljs-type">TreeNode</span> <span class="hljs-variable">root</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TreeNode</span>();<br>        root.left = buildTree(left, mid - <span class="hljs-number">1</span>);<br>        root.val = globalHead.val;<br>        globalHead = globalHead.next;<br>        root.right = buildTree(mid + <span class="hljs-number">1</span>, right);<br>        <span class="hljs-keyword">return</span> root;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>小结：</p>
+<ol>
+<li>快慢指针不需要新建一个 dummy 头结点</li>
+<li>难以解决的递归问题别忘记可以调用函数自身完成复杂功能</li>
+<li>BST 特殊性质决定了中序遍历可以直接填递增值</li>
+</ol>
+</li>
+</ul>
+<h2 id="27-BST8-在-BST-中找两个节点使和为一个定值"><a href="#27-BST8-在-BST-中找两个节点使和为一个定值" class="headerlink" title="27. BST8 在 BST 中找两个节点使和为一个定值"></a>27. BST8 在 BST 中找两个节点使和为一个定值</h2><ul>
+<li><p>题目：在 BST 中找两个节点使和为一个定值（lc653）</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>中序遍历得到有序列表后用双指针确定，时间 O（n），空间 O（n）</li>
+<li>不用列表保存，用两个指针指向顺序访问到的节点，和逆向访问的节点，时间 O（n），空间 O（n）</li>
+</ol>
+</li>
+<li><p>题解：</p>
+<ol>
+<li><p>中序遍历 + 双指针</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 中序遍历得到有序列表后用双指针确定，时间 O（n），空间 O（n）</span><br><span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">findTarget</span><span class="hljs-params">(TreeNode root, <span class="hljs-type">int</span> k)</span> &#123;<br>    List&lt;Integer&gt; nums = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>    inOrder(root, nums);<br>    <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, j = nums.size() - <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (i &lt; j) &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> nums.get(i) + nums.get(j);<br>        <span class="hljs-keyword">if</span> (sum == k) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        <span class="hljs-keyword">if</span> (sum &lt; k) i++;<br>        <span class="hljs-keyword">else</span> j--;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">inOrder</span><span class="hljs-params">(TreeNode root, List&lt;Integer&gt; nums)</span> &#123;<br>    <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span>;<br>    inOrder(root.left, nums);<br>    nums.add(root.val);<br>    inOrder(root.right, nums);<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>中序遍历优化</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-comment">// 不用列表保存，用两个指针指向顺序访问到的节点，和逆向访问的节点，时间 O（n），空间 O（n）</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">findTarget</span><span class="hljs-params">(TreeNode root, <span class="hljs-type">int</span> k)</span> &#123;<br>        <span class="hljs-type">TreeNode</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> root, right = root;<br>        Deque&lt;TreeNode&gt; leftStack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayDeque</span>&lt;TreeNode&gt;();<br>        Deque&lt;TreeNode&gt; rightStack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayDeque</span>&lt;TreeNode&gt;();<br>        leftStack.push(left);<br>        <span class="hljs-keyword">while</span> (left.left != <span class="hljs-literal">null</span>) &#123;<br>            leftStack.push(left.left);<br>            left = left.left;<br>        &#125;<br>        rightStack.push(right);<br>        <span class="hljs-keyword">while</span> (right.right != <span class="hljs-literal">null</span>) &#123;<br>            rightStack.push(right.right);<br>            right = right.right;<br>        &#125;<br>        <span class="hljs-keyword">while</span> (left != right) &#123;<br>            <span class="hljs-keyword">if</span> (left.val + right.val == k) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (left.val + right.val &lt; k) &#123;<br>                left = getLeft(leftStack);<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                right = getRight(rightStack);<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> TreeNode <span class="hljs-title function_">getLeft</span><span class="hljs-params">(Deque&lt;TreeNode&gt; stack)</span> &#123;<br>        <span class="hljs-type">TreeNode</span> <span class="hljs-variable">root</span> <span class="hljs-operator">=</span> stack.pop();<br>        <span class="hljs-type">TreeNode</span> <span class="hljs-variable">node</span> <span class="hljs-operator">=</span> root.right;<br>        <span class="hljs-keyword">while</span> (node != <span class="hljs-literal">null</span>) &#123;<br>            stack.push(node);<br>            node = node.left;<br>        &#125;<br>        <span class="hljs-keyword">return</span> root;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> TreeNode <span class="hljs-title function_">getRight</span><span class="hljs-params">(Deque&lt;TreeNode&gt; stack)</span> &#123;<br>        <span class="hljs-type">TreeNode</span> <span class="hljs-variable">root</span> <span class="hljs-operator">=</span> stack.pop();<br>        <span class="hljs-type">TreeNode</span> <span class="hljs-variable">node</span> <span class="hljs-operator">=</span> root.left;<br>        <span class="hljs-keyword">while</span> (node != <span class="hljs-literal">null</span>) &#123;<br>            stack.push(node);<br>            node = node.right;<br>        &#125;<br>        <span class="hljs-keyword">return</span> root;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>由于两个待求的节点可能分别在左右子树中，所以不能简单的用左右子树递归求解</p>
+</li>
+</ul>
+<h2 id="28-BST9-在-BST-中查找两个节点差的最小绝对值"><a href="#28-BST9-在-BST-中查找两个节点差的最小绝对值" class="headerlink" title="28. BST9 在 BST 中查找两个节点差的最小绝对值"></a>28. BST9 在 BST 中查找两个节点差的最小绝对值</h2><ul>
+<li><p>题目：在 BST 中查找两个节点差的最小绝对值（lc530）</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>中序遍历过程中计算和上一个值的差，记录最大，时间 O（n），空间 O（logn）</li>
+</ol>
+</li>
+<li><p>题解：</p>
+<ol>
+<li><p>递归</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-comment">// 中序遍历过程中计算和上一个值的差，记录最大，时间 O（n），空间 O（logn）</span><br>    <span class="hljs-type">int</span> <span class="hljs-variable">min</span> <span class="hljs-operator">=</span> Integer.MAX_VALUE;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">prev</span> <span class="hljs-operator">=</span> -<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getMinimumDifference</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> min;<br>        getMinimumDifference(root.left);<br>        <span class="hljs-keyword">if</span> (prev != -<span class="hljs-number">1</span>) min = Math.min(min, root.val - prev);<br>        prev = root.val;<br>        getMinimumDifference(root.right);<br>        <span class="hljs-keyword">return</span> min;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>小结：</p>
+<ol>
+<li>设置 int 最大值可以给赋值 Integer.MAX_VALUE</li>
+<li>Math.abs 取绝对值</li>
+</ol>
+</li>
+</ul>
+<h2 id="29-BST10-寻找BST中出现次数最多的值"><a href="#29-BST10-寻找BST中出现次数最多的值" class="headerlink" title="29. BST10 寻找BST中出现次数最多的值"></a>29. BST10 寻找BST中出现次数最多的值</h2><ul>
+<li><p>题目：寻找BST中出现次数最多的值（lc501）</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>中序遍历同时判断是否为众数，时间 O（n），空间 O（logn）</li>
+<li>Morris 中序遍历，时间 O（n），空间 O（1）</li>
+</ol>
+</li>
+<li><p>题解：</p>
+<ol>
+<li><p>遍历</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    List&lt;Integer&gt; answer = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Integer&gt;();<br>    <span class="hljs-type">int</span> base, count, maxCount;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] findMode(TreeNode root) &#123;<br>        dfs(root);<br>        <span class="hljs-type">int</span>[] mode = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[answer.size()];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; answer.size(); ++i) &#123;<br>            mode[i] = answer.get(i);<br>        &#125;<br>        <span class="hljs-keyword">return</span> mode;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">dfs</span><span class="hljs-params">(TreeNode o)</span> &#123;<br>        <span class="hljs-keyword">if</span> (o == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        dfs(o.left);<br>        update(o.val);<br>        dfs(o.right);<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">update</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> &#123;<br>        <span class="hljs-keyword">if</span> (x == base) &#123;<br>            ++count;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            count = <span class="hljs-number">1</span>;<br>            base = x;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (count == maxCount) &#123;<br>            answer.add(base);<br>        &#125;<br>        <span class="hljs-keyword">if</span> (count &gt; maxCount) &#123;<br>            maxCount = count;<br>            answer.clear();<br>            answer.add(base);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>Mirros</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-type">int</span> base, count, maxCount;<br>    List&lt;Integer&gt; answer = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Integer&gt;();<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] findMode(TreeNode root) &#123;<br>        <span class="hljs-type">TreeNode</span> <span class="hljs-variable">cur</span> <span class="hljs-operator">=</span> root, pre = <span class="hljs-literal">null</span>;<br>        <span class="hljs-keyword">while</span> (cur != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">if</span> (cur.left == <span class="hljs-literal">null</span>) &#123;<br>                update(cur.val);<br>                cur = cur.right;<br>                <span class="hljs-keyword">continue</span>;<br>            &#125;<br>            pre = cur.left;<br>            <span class="hljs-keyword">while</span> (pre.right != <span class="hljs-literal">null</span> &amp;&amp; pre.right != cur) &#123;<br>                pre = pre.right;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (pre.right == <span class="hljs-literal">null</span>) &#123;<br>                pre.right = cur;<br>                cur = cur.left;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                pre.right = <span class="hljs-literal">null</span>;<br>                update(cur.val);<br>                cur = cur.right;<br>            &#125;<br>        &#125;<br>        <span class="hljs-type">int</span>[] mode = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[answer.size()];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; answer.size(); ++i) &#123;<br>            mode[i] = answer.get(i);<br>        &#125;<br>        <span class="hljs-keyword">return</span> mode;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">update</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> &#123;<br>        <span class="hljs-keyword">if</span> (x == base) &#123;<br>            ++count;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            count = <span class="hljs-number">1</span>;<br>            base = x;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (count == maxCount) &#123;<br>            answer.add(base);<br>        &#125;<br>        <span class="hljs-keyword">if</span> (count &gt; maxCount) &#123;<br>            maxCount = count;<br>            answer.clear();<br>            answer.add(base);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>小结：</p>
+<ol>
+<li>可以存在多个众数，判断时候就比较麻烦</li>
+<li>Mirros 强啊</li>
+</ol>
+</li>
+</ul>
+<h2 id="30-Trie1-实现一个-Trie"><a href="#30-Trie1-实现一个-Trie" class="headerlink" title="30. Trie1 实现一个 Trie"></a>30. Trie1 实现一个 Trie</h2><ul>
+<li><p>题目：Trie，又称前缀树或字典树，用于判断字符串是否存在或者是否具有某种字符串前缀（lc208）</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>内置类 Node，包含属性 childs 为大小为 26 的 Node 数组，记录是否有下一个对应字母的单词，时间 O（n），空间 O（26mn）</li>
+<li>可以把自己当成 Node，时间 O（n），空间 O（26mn）</li>
+</ol>
+</li>
+<li><p>题解：</p>
+<ol>
+<li><p>Trie</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Trie</span> &#123;<br>    <span class="hljs-comment">// 内置类 Node，包含属性 childs 为大小为 26 的 Node 数组，记录是否有下一个对应字母的单词，时间 O（n），空间 O（26mn）</span><br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Node</span> &#123;<br>        Node[] childs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Node</span>[<span class="hljs-number">26</span>];<br>        <span class="hljs-type">boolean</span> isLeaf;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">Node</span> <span class="hljs-variable">root</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Node</span>();<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Trie</span><span class="hljs-params">()</span> &#123;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insert</span><span class="hljs-params">(String word)</span> &#123;<br>        insert(word, root);<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insert</span><span class="hljs-params">(String word, Node node)</span> &#123;<br>        <span class="hljs-keyword">if</span> (node == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span>;<br>        <span class="hljs-keyword">if</span> (word.length() == <span class="hljs-number">0</span>) &#123;<br>            node.isLeaf = <span class="hljs-literal">true</span>;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">index</span> <span class="hljs-operator">=</span> indexForChar(word.charAt(<span class="hljs-number">0</span>));<br>        <span class="hljs-keyword">if</span> (node.childs[index] == <span class="hljs-literal">null</span>) &#123;<br>            node.childs[index] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Node</span>();<br>        &#125;<br>        insert(word.substring(<span class="hljs-number">1</span>), node.childs[index]);<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">search</span><span class="hljs-params">(String word)</span> &#123;<br>        <span class="hljs-keyword">return</span> search(word, root);<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">search</span><span class="hljs-params">(String word, Node node)</span> &#123;<br>        <span class="hljs-keyword">if</span> (node == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">if</span> (word.length() == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> node.isLeaf;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">index</span> <span class="hljs-operator">=</span> indexForChar(word.charAt(<span class="hljs-number">0</span>));<br>        <span class="hljs-keyword">return</span> search(word.substring(<span class="hljs-number">1</span>), node.childs[index]);<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">startsWith</span><span class="hljs-params">(String prefix)</span> &#123;<br>        <span class="hljs-keyword">return</span> startWith(prefix, root);<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">startWith</span><span class="hljs-params">(String prefix, Node node)</span> &#123;<br>        <span class="hljs-keyword">if</span> (node == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">if</span> (prefix.length() == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">index</span> <span class="hljs-operator">=</span> indexForChar(prefix.charAt(<span class="hljs-number">0</span>));<br>        <span class="hljs-keyword">return</span> startWith(prefix.substring(<span class="hljs-number">1</span>), node.childs[index]);<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-title function_">indexForChar</span><span class="hljs-params">(<span class="hljs-type">char</span> c)</span> &#123;<br>        <span class="hljs-keyword">return</span> c - <span class="hljs-string">&#x27;a&#x27;</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>Trie 优化</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Trie</span> &#123;<br>    <span class="hljs-comment">// 可以把自己当成 Node，时间 O（n），空间 O（26mn）</span><br>    <span class="hljs-keyword">private</span> Trie[] children;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> isEnd;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Trie</span><span class="hljs-params">()</span> &#123;<br>        children = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Trie</span>[<span class="hljs-number">26</span>];<br>        isEnd = <span class="hljs-literal">false</span>;<br>    &#125;<br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insert</span><span class="hljs-params">(String word)</span> &#123;<br>        <span class="hljs-type">Trie</span> <span class="hljs-variable">node</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">this</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; word.length(); i++) &#123;<br>            <span class="hljs-type">char</span> <span class="hljs-variable">ch</span> <span class="hljs-operator">=</span> word.charAt(i);<br>            <span class="hljs-type">int</span> <span class="hljs-variable">index</span> <span class="hljs-operator">=</span> ch - <span class="hljs-string">&#x27;a&#x27;</span>;<br>            <span class="hljs-keyword">if</span> (node.children[index] == <span class="hljs-literal">null</span>) &#123;<br>                node.children[index] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Trie</span>();<br>            &#125;<br>            node = node.children[index];<br>        &#125;<br>        node.isEnd = <span class="hljs-literal">true</span>;<br>    &#125;<br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">search</span><span class="hljs-params">(String word)</span> &#123;<br>        <span class="hljs-type">Trie</span> <span class="hljs-variable">node</span> <span class="hljs-operator">=</span> searchPrefix(word);<br>        <span class="hljs-keyword">return</span> node != <span class="hljs-literal">null</span> &amp;&amp; node.isEnd;<br>    &#125;<br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">startsWith</span><span class="hljs-params">(String prefix)</span> &#123;<br>        <span class="hljs-keyword">return</span> searchPrefix(prefix) != <span class="hljs-literal">null</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> Trie <span class="hljs-title function_">searchPrefix</span><span class="hljs-params">(String prefix)</span> &#123;<br>        <span class="hljs-type">Trie</span> <span class="hljs-variable">node</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">this</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; prefix.length(); i++) &#123;<br>            <span class="hljs-type">char</span> <span class="hljs-variable">ch</span> <span class="hljs-operator">=</span> prefix.charAt(i);<br>            <span class="hljs-type">int</span> <span class="hljs-variable">index</span> <span class="hljs-operator">=</span> ch - <span class="hljs-string">&#x27;a&#x27;</span>;<br>            <span class="hljs-keyword">if</span> (node.children[index] == <span class="hljs-literal">null</span>) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>            &#125;<br>            node = node.children[index];<br>        &#125;<br>        <span class="hljs-keyword">return</span> node;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>小结：</p>
+<ol>
+<li>用下一个节点的属性记录当前节点是否为单词最后一个字符</li>
+<li>用类本身作为 Node</li>
+</ol>
+</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/CyC2018/CS-Notes/blob/master/notes/Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E6%A0%91.md">CS-Notes&#x2F;Leetcode 题解 - 树.md at master · CyC2018&#x2F;CS-Notes (github.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problemset/all/?topicSlugs=tree&page=1&sorting=W3t9XQ==">题库 - 力扣 (LeetCode) 全球极客挚爱的技术成长平台</a></li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A1%B9%E7%AE%97%E6%B3%95%E9%A2%98%E7%9B%AE/" class="category-chain-item">专项算法题目</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/algorithm/">#algorithm</a>
+      
+        <a href="/tags/data-structure/">#data structure</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>算法专项精选题 - 树（三）</div>
+      <div>http://example.com/2022/06/21/算法/专项算法题目/algorithm5/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Handsom JOJO</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年6月21日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/21/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A1%B9%E7%AE%97%E6%B3%95%E9%A2%98%E7%9B%AE/algorithm4/" title="算法专项精选题 - 树（二）">
+                        <span class="hidden-mobile">算法专项精选题 - 树（二）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
