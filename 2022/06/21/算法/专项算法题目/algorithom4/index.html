@@ -1,0 +1,963 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Handsom JOJO">
+  <meta name="keywords" content="java, algorithm, blog">
+  
+    <meta name="description" content="树相关算法题目精选，典中典">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法专项精选题 - 树（二）">
+<meta property="og:url" content="http://example.com/2022/06/21/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A1%B9%E7%AE%97%E6%B3%95%E9%A2%98%E7%9B%AE/algorithom4/index.html">
+<meta property="og:site_name" content="幸福的西西弗斯">
+<meta property="og:description" content="树相关算法题目精选，典中典">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/index/algorithm.png">
+<meta property="article:published_time" content="2022-06-21T02:43:00.000Z">
+<meta property="article:modified_time" content="2022-06-21T03:09:30.576Z">
+<meta property="article:author" content="Handsom JOJO">
+<meta property="article:tag" content="algorithm">
+<meta property="article:tag" content="data structure">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/algorithm.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>算法专项精选题 - 树（二） - 幸福的西西弗斯</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.1","typing":{"enable":true,"typeSpeed":90,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Handsome JOJO</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/banner/algorithm.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="算法专项精选题 - 树（二）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-21 10:43" pubdate>
+          2022年6月21日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          13k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          110 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">算法专项精选题 - 树（二）</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="树（二）"><a href="#树（二）" class="headerlink" title="树（二）"></a>树（二）</h1><h2 id="11-递归11-统计左叶子节点的和"><a href="#11-递归11-统计左叶子节点的和" class="headerlink" title="11. 递归11 统计左叶子节点的和"></a>11. 递归11 统计左叶子节点的和</h2><ul>
+<li><p>题目：计算二叉树所有左叶子和（lc404）</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>递归，DFS，时间 O（n），空间 O（n）</li>
+</ol>
+</li>
+<li><p>题解：</p>
+<ol>
+<li><p>DFS 递归</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//递归，DFS，时间 O（n），空间 O（n）</span><br><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">sumOfLeftLeaves</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>    <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">if</span> (isLeaf(root.left)) <span class="hljs-keyword">return</span> root.left.val + sumOfLeftLeaves(root.right);<br>    <span class="hljs-keyword">return</span> sumOfLeftLeaves(root.left) + sumOfLeftLeaves(root.right);<br>&#125;<br><br><span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isLeaf</span><span class="hljs-params">(TreeNode node)</span>&#123;<br>    <span class="hljs-keyword">if</span> (node == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">return</span> node.left == <span class="hljs-literal">null</span> &amp;&amp; node.right == <span class="hljs-literal">null</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>小结：</p>
+<ol>
+<li>不能判断当前节点是否为左节点，所以判断左节点是否为叶子</li>
+</ol>
+</li>
+</ul>
+<h2 id="12-递归12-相同节点值的最大路径长度"><a href="#12-递归12-相同节点值的最大路径长度" class="headerlink" title="12. 递归12 相同节点值的最大路径长度"></a>12. 递归12 相同节点值的最大路径长度</h2><ul>
+<li><p>题目：寻找一棵树里最长的相同节点组成的路径（lc687）</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>当前节点左右最长同点路径和，和左子树最长的同点路径，和右子树最长同点路径，比较取最大值返回，时间 O（n^2），空间 O（n）</li>
+<li>在一个每次返回最长同点路径的后序遍历 DFS 代码中，记录遇到的最长同点路径，时间 O（n），空间 O（n）</li>
+</ol>
+</li>
+<li><p>题解：</p>
+<ol>
+<li><p>dfs</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-comment">// 当前节点左右最长同点路径和，和左子树最长的同点路径，和右子树最长同点路径，比较取最大值返回，时间 O（n^2），空间 O（n）</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">longestUnivaluePath</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">return</span> Math.max(longestPath(root.left, root.val) + longestPath(root.right, root.val), Math.max(longestUnivaluePath(root.left), longestUnivaluePath(root.right)));<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-title function_">longestPath</span><span class="hljs-params">(TreeNode root, <span class="hljs-type">int</span> val)</span> &#123;<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span> || root.val != val) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">return</span> Math.max(longestPath(root.left, val), longestPath(root.right, val)) + <span class="hljs-number">1</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>dfs 优化</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 在一个每次返回最长同点路径的后序遍历 DFS 代码中，记录遇到的最长同点路径，时间 O（n），空间 O（n）</span><br><span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-variable">path</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br><br><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">longestUnivaluePath</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>    dfs(root);<br>    <span class="hljs-keyword">return</span> path;<br>&#125;<br><br><span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-title function_">dfs</span><span class="hljs-params">(TreeNode root)</span>&#123;<br>    <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> dfs(root.left);<br>    <span class="hljs-type">int</span> <span class="hljs-variable">right</span> <span class="hljs-operator">=</span> dfs(root.right);<br>    <span class="hljs-type">int</span> <span class="hljs-variable">leftPath</span> <span class="hljs-operator">=</span> root.left != <span class="hljs-literal">null</span> &amp;&amp; root.left.val == root.val ? left + <span class="hljs-number">1</span> : <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">rightPath</span> <span class="hljs-operator">=</span> root.right != <span class="hljs-literal">null</span> &amp;&amp; root.right.val == root.val ? right + <span class="hljs-number">1</span> : <span class="hljs-number">0</span>;<br>    path = Math.max(path, leftPath + rightPath);<br>    <span class="hljs-keyword">return</span> Math.max(leftPath, rightPath);<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>小结：</p>
+<ol>
+<li>要努力想出一次遍历的空间为 O（n）的解法，想办法在求深度的代码中改良</li>
+<li>求最大值，可以每次返回的都是局部最大的计算参数，在当前节点的访问中完成局部最大的计算，对比记录最大值</li>
+</ol>
+</li>
+</ul>
+<h2 id="13-递归13-间隔遍历"><a href="#13-递归13-间隔遍历" class="headerlink" title="13. 递归13 间隔遍历"></a>13. 递归13 间隔遍历</h2><ul>
+<li><p>题目：不可以连续访问节点，求访问和最大值（lc337）</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>动态规划，用两个 HashMap 记录一个节点 rob 和不 rob 的子树最大和，f 表示选择，g不选择，时间 O（n），空间 O（n）</li>
+<li>由于动态规划过程中每个节点只关心孩子节点的 f 和 g 值，可以优化，时间 O（n），空间 O（n）</li>
+<li>简单递归会超出时间复杂度，用 Map 记录已计算过的点，只记录 rob 某点情况下子树最大值，时间 O（n），空间 O（n）</li>
+</ol>
+</li>
+<li><p>题解：</p>
+<ol>
+<li><p>动态规划</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-comment">// 动态规划，用两个 HashMap 记录一个节点 rob 和不 rob 的子树最大和，f 表示选择，g不选择，时间 O（n），空间 O（n）</span><br>    Map&lt;TreeNode, Integer&gt; f = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;TreeNode, Integer&gt;();<br>    Map&lt;TreeNode, Integer&gt; g = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;TreeNode, Integer&gt;();<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">rob</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>        dfs(root);<br>        <span class="hljs-keyword">return</span> Math.max(f.getOrDefault(root, <span class="hljs-number">0</span>), g.getOrDefault(root, <span class="hljs-number">0</span>));<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">dfs</span><span class="hljs-params">(TreeNode node)</span> &#123;<br>        <span class="hljs-keyword">if</span> (node == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        dfs(node.left);<br>        dfs(node.right);<br>        f.put(node, node.val + g.getOrDefault(node.left, <span class="hljs-number">0</span>) + g.getOrDefault(node.right, <span class="hljs-number">0</span>));<br>        g.put(node, Math.max(f.getOrDefault(node.left, <span class="hljs-number">0</span>), g.getOrDefault(node.left, <span class="hljs-number">0</span>)) + Math.max(f.getOrDefault(node.right, <span class="hljs-number">0</span>), g.getOrDefault(node.right, <span class="hljs-number">0</span>)));<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>动态规划 优化</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-comment">// 由于动态规划过程中每个节点只关心孩子节点的 f 和 g 值，可以优化，时间 O（n），空间 O（n）</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">rob</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>        <span class="hljs-type">int</span>[] rootStatus = dfs(root);<br>        <span class="hljs-keyword">return</span> Math.max(rootStatus[<span class="hljs-number">0</span>], rootStatus[<span class="hljs-number">1</span>]);<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] dfs(TreeNode node) &#123;<br>        <span class="hljs-keyword">if</span> (node == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;<span class="hljs-number">0</span>, <span class="hljs-number">0</span>&#125;;<br>        &#125;<br>        <span class="hljs-type">int</span>[] l = dfs(node.left);<br>        <span class="hljs-type">int</span>[] r = dfs(node.right);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">selected</span> <span class="hljs-operator">=</span> node.val + l[<span class="hljs-number">1</span>] + r[<span class="hljs-number">1</span>];<br>        <span class="hljs-type">int</span> <span class="hljs-variable">notSelected</span> <span class="hljs-operator">=</span> Math.max(l[<span class="hljs-number">0</span>], l[<span class="hljs-number">1</span>]) + Math.max(r[<span class="hljs-number">0</span>], r[<span class="hljs-number">1</span>]);<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;selected, notSelected&#125;;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>动态规划另一种写法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 简单递归会超出时间复杂度，用 Map 记录已计算过的点，只记录 rob 某点情况下子树最大值，时间 O（n），空间 O（n）</span><br>Map&lt;TreeNode, Integer&gt; cache = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;(); <br><br><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">rob</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>    <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">if</span> (cache.containsKey(root)) <span class="hljs-keyword">return</span> cache.get(root);<br>    <span class="hljs-type">int</span> <span class="hljs-variable">val1</span> <span class="hljs-operator">=</span> root.val;<br>    <span class="hljs-keyword">if</span> (root.left != <span class="hljs-literal">null</span>) val1 += rob(root.left.left) + rob(root.left.right);<br>    <span class="hljs-keyword">if</span> (root.right != <span class="hljs-literal">null</span>) val1 += rob(root.right.left) + rob(root.right.right);<br>    <span class="hljs-type">int</span> <span class="hljs-variable">val2</span> <span class="hljs-operator">=</span> rob(root.left) + rob(root.right);<br>    <span class="hljs-type">int</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> Math.max(val1, val2);<br>    cache.put(root, res);<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+<h2 id="14-递归14-找出二叉树中第二小的节点"><a href="#14-递归14-找出二叉树中第二小的节点" class="headerlink" title="14. 递归14 找出二叉树中第二小的节点"></a>14. 递归14 找出二叉树中第二小的节点</h2><ul>
+<li><p>题目：一个二叉树每个节点为子节点中小的，求二叉树中第二小节点（lc671）</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>DFS递归，找大于根节点的最小值，时间 O（n），空间 O（n）</li>
+<li>DFS递归，左右节点分别找第一个大于根节点的值，比较后 return，没有满足情况的值返回 -1，时间 O（n），空间 O（n）</li>
+</ol>
+</li>
+<li><p>题解：</p>
+<ol>
+<li><p>dfs1</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-comment">// DFS递归，找大于根节点的最小值，时间 O（n），空间 O（n）</span><br>    <span class="hljs-type">int</span> ans;<br>    <span class="hljs-type">int</span> rootvalue;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">findSecondMinimumValue</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>        ans = -<span class="hljs-number">1</span>;<br>        rootvalue = root.val;<br>        dfs(root);<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">dfs</span><span class="hljs-params">(TreeNode node)</span> &#123;<br>        <span class="hljs-keyword">if</span> (node == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (ans != -<span class="hljs-number">1</span> &amp;&amp; node.val &gt;= ans) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (node.val &gt; rootvalue) &#123;<br>            ans = node.val;<br>        &#125;<br>        dfs(node.left);<br>        dfs(node.right);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>dfs2</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">findSecondMinimumValue</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>    <span class="hljs-comment">// DFS递归，左右节点分别找第一个大于根节点的值，比较后 return，没有满足情况的值返回 -1，时间 O（n），空间 O（n）</span><br>    <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">if</span> (root.left == <span class="hljs-literal">null</span> &amp;&amp; root.right == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">leftVal</span> <span class="hljs-operator">=</span> root.left.val;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">rightVal</span> <span class="hljs-operator">=</span> root.right.val;<br>    <span class="hljs-keyword">if</span> (leftVal == root.val) leftVal = findSecondMinimumValue(root.left);<br>    <span class="hljs-keyword">if</span> (rightVal == root.val) rightVal = findSecondMinimumValue(root.right);<br>    <span class="hljs-keyword">if</span> (leftVal != -<span class="hljs-number">1</span> &amp;&amp; rightVal != -<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> Math.min(leftVal, rightVal);<br>    <span class="hljs-keyword">if</span> (leftVal != -<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> leftVal;<br>    <span class="hljs-keyword">return</span> rightVal;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>小结：</p>
+<ol>
+<li>递归代码复杂的话可以先不要想着写出最简洁的代码，完成功能后再简化，比如合并 if 分支</li>
+</ol>
+</li>
+</ul>
+<h2 id="15-层次遍历1-一棵树每层节点的平均数"><a href="#15-层次遍历1-一棵树每层节点的平均数" class="headerlink" title="15. 层次遍历1 一棵树每层节点的平均数"></a>15. 层次遍历1 一棵树每层节点的平均数</h2><ul>
+<li><p>题目：得到一颗二叉树每层节点平均数（lc637）</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>层次遍历，不过每次记录队列 size，将 size 个节点处理完再进行下一次迭代，时间 O（n），空间 O（n）</li>
+<li>DFS，维护一个counts存储每层节点数，sums存储节点值和，时间 O（n），空间 O（n）</li>
+</ol>
+</li>
+<li><p>解题：</p>
+<ol>
+<li><p>层次遍历</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> List&lt;Double&gt; <span class="hljs-title function_">averageOfLevels</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>    <span class="hljs-comment">// 层次遍历，不过每次记录队列 size，将 size 个节点处理完再进行下一次迭代，时间 O（n），空间 O（n）</span><br>    List&lt;Double&gt; ret = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>    <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> ret;<br>    Queue&lt;TreeNode&gt; queue = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>&lt;&gt;();<br>    queue.add(root);<br>    <span class="hljs-keyword">while</span> (!queue.isEmpty()) &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">cnt</span> <span class="hljs-operator">=</span> queue.size();<br>        <span class="hljs-type">double</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; cnt; i++) &#123;<br>            <span class="hljs-type">TreeNode</span> <span class="hljs-variable">node</span> <span class="hljs-operator">=</span> queue.poll();<br>            sum += node.val;<br>            <span class="hljs-keyword">if</span> (node.left != <span class="hljs-literal">null</span>) queue.add(node.left);<br>            <span class="hljs-keyword">if</span> (node.right != <span class="hljs-literal">null</span>) queue.add(node.right);<br>        &#125;<br>        ret.add(sum / cnt);<br>    &#125;<br>    <span class="hljs-keyword">return</span> ret;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>dfs</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-comment">// DFS，维护一个counts存储每层节点数，sums存储节点值和，时间 O（n），空间 O（n）</span><br>    <span class="hljs-keyword">public</span> List&lt;Double&gt; <span class="hljs-title function_">averageOfLevels</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>        List&lt;Integer&gt; counts = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Integer&gt;();<br>        List&lt;Double&gt; sums = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Double&gt;();<br>        dfs(root, <span class="hljs-number">0</span>, counts, sums);<br>        List&lt;Double&gt; averages = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Double&gt;();<br>        <span class="hljs-type">int</span> <span class="hljs-variable">size</span> <span class="hljs-operator">=</span> sums.size();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; size; i++) &#123;<br>            averages.add(sums.get(i) / counts.get(i));<br>        &#125;<br>        <span class="hljs-keyword">return</span> averages;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">dfs</span><span class="hljs-params">(TreeNode root, <span class="hljs-type">int</span> level, List&lt;Integer&gt; counts, List&lt;Double&gt; sums)</span> &#123;<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (level &lt; sums.size()) &#123;<br>            sums.set(level, sums.get(level) + root.val);<br>            counts.set(level, counts.get(level) + <span class="hljs-number">1</span>);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            sums.add(<span class="hljs-number">1.0</span> * root.val);<br>            counts.add(<span class="hljs-number">1</span>);<br>        &#125;<br>        dfs(root.left, level + <span class="hljs-number">1</span>, counts, sums);<br>        dfs(root.right, level + <span class="hljs-number">1</span>, counts, sums);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>小结：</p>
+<ol>
+<li>我一开始的思路是用两个队列，奇偶队列交替使用，每次某个队列为空就代表开始新的一层遍历</li>
+<li>这个使用一个队列直接记录队列 size 然后处理 size 个后算一次 sum 显然更简洁，作为模板记一下</li>
+</ol>
+</li>
+</ul>
+<h2 id="16-层次遍历2-得到左下角的节点"><a href="#16-层次遍历2-得到左下角的节点" class="headerlink" title="16. 层次遍历2 得到左下角的节点"></a>16. 层次遍历2 得到左下角的节点</h2><ul>
+<li><p>题目：得到二叉树最下层最左节点（lc513）</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>用层次遍历，每到一层记录一下第一个节点，时间 O（n），空间 O（n）</li>
+<li>用层次遍历，先右后左，最后一个访问节点就是目标节点，时间 O（n），空间 O（n）</li>
+</ol>
+</li>
+<li><p>题解：</p>
+<ol>
+<li><p>层次遍历 1</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">findBottomLeftValue</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>        <span class="hljs-comment">// 用层次遍历，每到一层记录一下第一个节点，时间 O（n），空间 O（n）</span><br>        Queue&lt;TreeNode&gt; queue = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>&lt;TreeNode&gt;();<br>        queue.offer(root);<br>        <span class="hljs-type">TreeNode</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> root;<br>        <span class="hljs-keyword">while</span> (!queue.isEmpty()) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">size</span> <span class="hljs-operator">=</span> queue.size();<br>            res = queue.peek();<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; size; i++) &#123;<br>                <span class="hljs-type">TreeNode</span> <span class="hljs-variable">tmp</span> <span class="hljs-operator">=</span> queue.poll();<br>                <span class="hljs-keyword">if</span> (tmp.left != <span class="hljs-literal">null</span>) queue.offer(tmp.left);<br>                <span class="hljs-keyword">if</span> (tmp.right != <span class="hljs-literal">null</span>) queue.offer(tmp.right);<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res.val;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>层次遍历 2</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">findBottomLeftValue</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>    <span class="hljs-comment">// 用层次遍历，先右后左，最后一个访问节点就是目标节点，时间 O（n），空间 O（n）</span><br>    Queue&lt;TreeNode&gt; queue = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>&lt;&gt;();<br>    queue.add(root);<br>    <span class="hljs-keyword">while</span> (!queue.isEmpty()) &#123;<br>        root = queue.poll();<br>        <span class="hljs-keyword">if</span> (root.right != <span class="hljs-literal">null</span>) queue.add(root.right);<br>        <span class="hljs-keyword">if</span> (root.left != <span class="hljs-literal">null</span>) queue.add(root.left);<br>    &#125;<br>    <span class="hljs-keyword">return</span> root.val;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>小结：</p>
+<ol>
+<li>层次遍历每层操作是个模板，留意一下</li>
+<li>思维要活一点，遍历的本质是访问顺序，不是只有 DFS、BFS 的模板一样，先左后右，可以根据题目魔改，有意外惊喜</li>
+</ol>
+</li>
+</ul>
+<h2 id="17-非递归1-二叉树前序遍历"><a href="#17-非递归1-二叉树前序遍历" class="headerlink" title="17. 非递归1 二叉树前序遍历"></a>17. 非递归1 二叉树前序遍历</h2><ul>
+<li><p>题目：非递归，迭代完成二叉树的前序遍历（lc144）</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>需要一个栈来存储待访问的节点，前序遍历，先访问当前节点，右孩子压栈，左孩子压栈，迭代，时间 O（n），空间 O（n）</li>
+<li>Morris 遍历，利用空指针记录跳回的位置，第一次先找到跳回的上一个点，右指针设置当前，然后访问当前节点后访问左子树，当跳回时候，找到跳回的上一个点，右指针设置为 null，访问右子树，时间 O（n），空间 O（1）</li>
+</ol>
+</li>
+<li><p>题解：</p>
+<ol>
+<li><p>栈</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title function_">preorderTraversal</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>    <span class="hljs-comment">// 需要一个栈来存储待访问的节点，前序遍历，先访问当前节点，右孩子压栈，左孩子压栈，迭代，时间 O（n），空间 O（n）</span><br>    List&lt;Integer&gt; ret = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>    Stack&lt;TreeNode&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();<br>    stack.push(root);<br>    <span class="hljs-keyword">while</span> (!stack.isEmpty()) &#123;<br>        <span class="hljs-type">TreeNode</span> <span class="hljs-variable">node</span> <span class="hljs-operator">=</span> stack.pop();<br>        <span class="hljs-keyword">if</span> (node == <span class="hljs-literal">null</span>) <span class="hljs-keyword">continue</span>;<br>        ret.add(node.val);<br>        stack.push(node.right);  <span class="hljs-comment">// 先右后左，保证左子树先遍历</span><br>        stack.push(node.left);<br>    &#125;<br>    <span class="hljs-keyword">return</span> ret;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>Morris</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title function_">preorderTraversal</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>        <span class="hljs-comment">// Morris 遍历，利用空指针记录跳回的位置，第一次先找到跳回的上一个点，右指针设置当前，然后访问当前节点后访问左子树，当跳回时候，找到跳回的上一个点，右指针设置为 null，访问右子树，时间 O（n），空间 O（1）</span><br>        List&lt;Integer&gt; res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Integer&gt;();<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span> res;<br>        &#125;<br>        <span class="hljs-type">TreeNode</span> <span class="hljs-variable">p1</span> <span class="hljs-operator">=</span> root, p2 = <span class="hljs-literal">null</span>;<br>        <span class="hljs-keyword">while</span> (p1 != <span class="hljs-literal">null</span>) &#123;<br>            p2 = p1.left;<br>            <span class="hljs-keyword">if</span> (p2 != <span class="hljs-literal">null</span>) &#123;<br>                <span class="hljs-keyword">while</span> (p2.right != <span class="hljs-literal">null</span> &amp;&amp; p2.right != p1) &#123;<br>                    p2 = p2.right;<br>                &#125;<br>                <span class="hljs-keyword">if</span> (p2.right == <span class="hljs-literal">null</span>) &#123;<br>                    res.add(p1.val);<br>                    p2.right = p1;<br>                    p1 = p1.left;<br>                    <span class="hljs-keyword">continue</span>;<br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    p2.right = <span class="hljs-literal">null</span>;<br>                &#125;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                res.add(p1.val);<br>            &#125;<br>            p1 = p1.right;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>小结</p>
+<ol>
+<li>普通的迭代就记着用栈，每次右边压栈就可以</li>
+<li>Morris 方法真牛，多复习，争取记住</li>
+</ol>
+</li>
+</ul>
+<h2 id="18-非递归2-二叉树中序遍历"><a href="#18-非递归2-二叉树中序遍历" class="headerlink" title="18. 非递归2 二叉树中序遍历"></a>18. 非递归2 二叉树中序遍历</h2><ul>
+<li><p>题目：非递归，迭代完成二叉树的中序遍历（lc94）</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>需要一个栈来存储待访问的节点，中序遍历，时间 O（n），空间 O（n）</li>
+<li>mirros，时间 O（n），空间 O（1）</li>
+</ol>
+</li>
+<li><p>题解：</p>
+<ol>
+<li><p>栈</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title function_">inorderTraversal</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>    <span class="hljs-comment">// 需要一个栈来存储待访问的节点，中序遍历，时间 O（n），空间 O（n）</span><br>    List&lt;Integer&gt; ret = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>    <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> ret;<br>    Stack&lt;TreeNode&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();<br>    <span class="hljs-type">TreeNode</span> <span class="hljs-variable">cur</span> <span class="hljs-operator">=</span> root;<br>    <span class="hljs-keyword">while</span> (cur != <span class="hljs-literal">null</span> || !stack.isEmpty()) &#123;<br>        <span class="hljs-keyword">while</span> (cur != <span class="hljs-literal">null</span>) &#123;<br>            stack.push(cur);<br>            cur = cur.left;<br>        &#125;<br>        <span class="hljs-type">TreeNode</span> <span class="hljs-variable">node</span> <span class="hljs-operator">=</span> stack.pop();<br>        ret.add(node.val);<br>        cur = node.right;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ret;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>Mirros</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title function_">inorderTraversal</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>        List&lt;Integer&gt; res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Integer&gt;();<br>        <span class="hljs-type">TreeNode</span> <span class="hljs-variable">predecessor</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br><br>        <span class="hljs-keyword">while</span> (root != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">if</span> (root.left != <span class="hljs-literal">null</span>) &#123;<br>                <span class="hljs-comment">// predecessor 节点就是当前 root 节点向左走一步，然后一直向右走至无法走为止</span><br>                predecessor = root.left;<br>                <span class="hljs-keyword">while</span> (predecessor.right != <span class="hljs-literal">null</span> &amp;&amp; predecessor.right != root) &#123;<br>                    predecessor = predecessor.right;<br>                &#125;<br>                <br>                <span class="hljs-comment">// 让 predecessor 的右指针指向 root，继续遍历左子树</span><br>                <span class="hljs-keyword">if</span> (predecessor.right == <span class="hljs-literal">null</span>) &#123;<br>                    predecessor.right = root;<br>                    root = root.left;<br>                &#125;<br>                <span class="hljs-comment">// 说明左子树已经访问完了，我们需要断开链接</span><br>                <span class="hljs-keyword">else</span> &#123;<br>                    res.add(root.val);<br>                    predecessor.right = <span class="hljs-literal">null</span>;<br>                    root = root.right;<br>                &#125;<br>            &#125;<br>            <span class="hljs-comment">// 如果没有左孩子，则直接访问右孩子</span><br>            <span class="hljs-keyword">else</span> &#123;<br>                res.add(root.val);<br>                root = root.right;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>小结：</p>
+<ol>
+<li>中序遍历的迭代就是不断地找左孩子，访问，curr &#x3D; curr.right，pop出上一个待访问的点</li>
+<li>mirros 牛</li>
+</ol>
+</li>
+</ul>
+<h2 id="19-非递归3-二叉树后序遍历"><a href="#19-非递归3-二叉树后序遍历" class="headerlink" title="19. 非递归3 二叉树后序遍历"></a>19. 非递归3 二叉树后序遍历</h2><ul>
+<li><p>题目：非递归，迭代完成二叉树的后序遍历（lc145）</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>需要一个栈来存储待访问的节点，后序遍历，增加一个指向上次访问节点的指针，每次访问当前节点先判断，上次访问节点是否指向自己的右孩子，注意 while 的判断这时候是 root !&#x3D; null || !stack.isEmpty()，访问当前节点后需要设置 root &#x3D; null（为了下次循环不重新遍历左边的节点），时间 O（n），空间 O（n）</li>
+<li>前序遍历变体，前序遍历为 root -&gt; left -&gt; right，后序遍历为 left -&gt; right -&gt; root。可以修改前序遍历成为 root -&gt; right -&gt; left，那么这个顺序就和后序遍历正好相反，时间 O（n），空间 O（n）</li>
+<li>morris 遍历，时间 O（n），空间 O（1）</li>
+</ol>
+</li>
+<li><p>题解：</p>
+<ol>
+<li><p>栈</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title function_">postorderTraversal</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>        <span class="hljs-comment">// 需要一个栈来存储待访问的节点，后序遍历，增加一个指向上次访问节点的指针，每次访问当前节点先判断，上次访问节点是否指向自己的右孩子，注意 while 的判断这时候是 root != null || !stack.isEmpty()，访问当前节点后需要设置 root = null（为了下次循环不重新遍历左边的节点），时间 O（n），空间 O（n）</span><br>        List&lt;Integer&gt; res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Integer&gt;();<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span> res;<br>        &#125;<br><br>        Deque&lt;TreeNode&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>&lt;TreeNode&gt;();<br>        <span class="hljs-type">TreeNode</span> <span class="hljs-variable">prev</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-keyword">while</span> (root != <span class="hljs-literal">null</span> || !stack.isEmpty()) &#123;<br>            <span class="hljs-keyword">while</span> (root != <span class="hljs-literal">null</span>) &#123;<br>                stack.push(root);<br>                root = root.left;<br>            &#125;<br>            root = stack.pop();<br>            <span class="hljs-keyword">if</span> (root.right == <span class="hljs-literal">null</span> || root.right == prev) &#123;<br>                res.add(root.val);<br>                prev = root;<br>                root = <span class="hljs-literal">null</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                stack.push(root);<br>                root = root.right;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>前序遍历变体</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title function_">postorderTraversal</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>    <span class="hljs-comment">// 前序遍历变体，前序遍历为 root -&gt; left -&gt; right，后序遍历为 left -&gt; right -&gt; root。可以修改前序遍历成为 root -&gt; right -&gt; left，那么这个顺序就和后序遍历正好相反，时间 O（n），空间 O（n）</span><br>    List&lt;Integer&gt; ret = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>    Stack&lt;TreeNode&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();<br>    stack.push(root);<br>    <span class="hljs-keyword">while</span> (!stack.isEmpty()) &#123;<br>        <span class="hljs-type">TreeNode</span> <span class="hljs-variable">node</span> <span class="hljs-operator">=</span> stack.pop();<br>        <span class="hljs-keyword">if</span> (node == <span class="hljs-literal">null</span>) <span class="hljs-keyword">continue</span>;<br>        ret.add(node.val);<br>        stack.push(node.left);<br>        stack.push(node.right);<br>    &#125;<br>    Collections.reverse(ret);<br>    <span class="hljs-keyword">return</span> ret;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>Mirros</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title function_">postorderTraversal</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>        List&lt;Integer&gt; res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Integer&gt;();<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span> res;<br>        &#125;<br><br>        <span class="hljs-type">TreeNode</span> <span class="hljs-variable">p1</span> <span class="hljs-operator">=</span> root, p2 = <span class="hljs-literal">null</span>;<br><br>        <span class="hljs-keyword">while</span> (p1 != <span class="hljs-literal">null</span>) &#123;<br>            p2 = p1.left;<br>            <span class="hljs-keyword">if</span> (p2 != <span class="hljs-literal">null</span>) &#123;<br>                <span class="hljs-keyword">while</span> (p2.right != <span class="hljs-literal">null</span> &amp;&amp; p2.right != p1) &#123;<br>                    p2 = p2.right;<br>                &#125;<br>                <span class="hljs-keyword">if</span> (p2.right == <span class="hljs-literal">null</span>) &#123;<br>                    p2.right = p1;<br>                    p1 = p1.left;<br>                    <span class="hljs-keyword">continue</span>;<br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    p2.right = <span class="hljs-literal">null</span>;<br>                    addPath(res, p1.left);<br>                &#125;<br>            &#125;<br>            p1 = p1.right;<br>        &#125;<br>        addPath(res, root);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addPath</span><span class="hljs-params">(List&lt;Integer&gt; res, TreeNode node)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (node != <span class="hljs-literal">null</span>) &#123;<br>            ++count;<br>            res.add(node.val);<br>            node = node.right;<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> res.size() - count, right = res.size() - <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span> (left &lt; right) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> res.get(left);<br>            res.set(left, res.get(right));<br>            res.set(right, temp);<br>            left++;<br>            right--;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>小结：</p>
+<ol>
+<li>遍历的本质是访问次序，如果正着顺序访问很难搞，可以逆着顺序访问然后把结果逆序</li>
+<li>后序遍历的迭代写法比先序遍历的迭代写法难得多，要多理解多看几次</li>
+<li>morris 牛逼</li>
+</ol>
+</li>
+</ul>
+<h2 id="20-BST1-修剪二叉查找树"><a href="#20-BST1-修剪二叉查找树" class="headerlink" title="20. BST1 修剪二叉查找树"></a>20. BST1 修剪二叉查找树</h2><ul>
+<li><p>题目：修剪 BST 使所有节点在某区间内并依然是 BST（lc669）</p>
+</li>
+<li><p>思路：</p>
+<ol>
+<li>递归，时间 O（n），空间 O（n）</li>
+</ol>
+</li>
+<li><p>题解：</p>
+<ol>
+<li><p>dfs</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title function_">trimBST</span><span class="hljs-params">(TreeNode root, <span class="hljs-type">int</span> L, <span class="hljs-type">int</span> R)</span> &#123;<br>    <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    <span class="hljs-keyword">if</span> (root.val &gt; R) <span class="hljs-keyword">return</span> trimBST(root.left, L, R);<br>    <span class="hljs-keyword">if</span> (root.val &lt; L) <span class="hljs-keyword">return</span> trimBST(root.right, L, R);<br>    root.left = trimBST(root.left, L, R);<br>    root.right = trimBST(root.right, L, R);<br>    <span class="hljs-keyword">return</span> root;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>小结：</p>
+<ol>
+<li>当 root &lt; L 时 root.left 直接丢弃，反之亦然</li>
+</ol>
+</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/CyC2018/CS-Notes/blob/master/notes/Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E6%A0%91.md">CS-Notes&#x2F;Leetcode 题解 - 树.md at master · CyC2018&#x2F;CS-Notes (github.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problemset/all/?topicSlugs=tree&page=1&sorting=W3t9XQ==">题库 - 力扣 (LeetCode) 全球极客挚爱的技术成长平台</a></li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A1%B9%E7%AE%97%E6%B3%95%E9%A2%98%E7%9B%AE/" class="category-chain-item">专项算法题目</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/algorithm/">#algorithm</a>
+      
+        <a href="/tags/data-structure/">#data structure</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>算法专项精选题 - 树（二）</div>
+      <div>http://example.com/2022/06/21/算法/专项算法题目/algorithom4/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Handsom JOJO</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年6月21日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/16/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A1%B9%E7%AE%97%E6%B3%95%E9%A2%98%E7%9B%AE/algorithom3/" title="算法专项精选题 - 树（一）">
+                        <span class="hidden-mobile">算法专项精选题 - 树（一）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/algorithm.png">
 <meta property="article:published_time" content="2022-06-16T02:02:18.000Z">
-<meta property="article:modified_time" content="2022-06-16T02:17:52.301Z">
+<meta property="article:modified_time" content="2022-06-21T02:43:34.995Z">
 <meta property="article:author" content="Handsom JOJO">
 <meta property="article:tag" content="algorithm">
 <meta property="article:tag" content="data structure">
@@ -283,7 +283,7 @@
             
             <div class="markdown-body">
               
-              <h1 id="树（一）"><a href="#树（一）" class="headerlink" title="树（一）"></a>树（一）</h1><h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><ul>
+              <h1 id="树（一）"><a href="#树（一）" class="headerlink" title="树（一）"></a>树（一）</h1><h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ul>
 <li>题目分类：<ol>
 <li>递归</li>
 <li>层次遍历</li>
@@ -319,7 +319,7 @@
 <li><p>思路：</p>
 <ol>
 <li>递归求节点深度，追加判断当前节点是否平衡，时间 O（n），空间 O（n）</li>
-<li>自己写的一种不写其他函数辅助的方法，不推荐，时间 O（n），空间 O（n）</li>
+<li>一种不写其他函数辅助的方法，不推荐，时间 O（n），空间 O（n）</li>
 </ol>
 </li>
 <li><p>题解：</p>
@@ -328,7 +328,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 递归求节点深度，追加判断当前节点是否平衡，时间 O（n），空间 O（n）</span><br><span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> <span class="hljs-literal">true</span>;<br><br><span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isBalanced</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>    maxDepth(root);<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">maxDepth</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>    <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">l</span> <span class="hljs-operator">=</span> maxDepth(root.left);<br>    <span class="hljs-type">int</span> <span class="hljs-variable">r</span> <span class="hljs-operator">=</span> maxDepth(root.right);<br>    <span class="hljs-keyword">if</span> (Math.abs(l - r) &gt; <span class="hljs-number">1</span>) result = <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> + Math.max(l, r);<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>原地递归</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-comment">// 自己写的一种不写其他函数辅助的方法，不推荐，时间 O（n），空间 O（n）</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> depth;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isBalanced</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span>) &#123;<br>            depth = <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        &#125;<br>        <span class="hljs-type">boolean</span> <span class="hljs-variable">leftIsBalanced</span> <span class="hljs-operator">=</span> isBalanced(root.left);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">leftDepth</span> <span class="hljs-operator">=</span> depth;<br>        <span class="hljs-type">boolean</span> <span class="hljs-variable">rightIsBalanced</span> <span class="hljs-operator">=</span> isBalanced(root.right);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">rightDepth</span> <span class="hljs-operator">=</span> depth;<br>        depth = Math.max(leftDepth, rightDepth) + <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span> (!(leftIsBalanced &amp;&amp; rightIsBalanced)) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">return</span> leftDepth - rightDepth &lt;= <span class="hljs-number">1</span> &amp;&amp; leftDepth - rightDepth &gt;= -<span class="hljs-number">1</span> ? <span class="hljs-literal">true</span> : <span class="hljs-literal">false</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-comment">// 一种不写其他函数辅助的方法，不推荐，时间 O（n），空间 O（n）</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> depth;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isBalanced</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span>) &#123;<br>            depth = <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        &#125;<br>        <span class="hljs-type">boolean</span> <span class="hljs-variable">leftIsBalanced</span> <span class="hljs-operator">=</span> isBalanced(root.left);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">leftDepth</span> <span class="hljs-operator">=</span> depth;<br>        <span class="hljs-type">boolean</span> <span class="hljs-variable">rightIsBalanced</span> <span class="hljs-operator">=</span> isBalanced(root.right);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">rightDepth</span> <span class="hljs-operator">=</span> depth;<br>        depth = Math.max(leftDepth, rightDepth) + <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span> (!(leftIsBalanced &amp;&amp; rightIsBalanced)) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">return</span> leftDepth - rightDepth &lt;= <span class="hljs-number">1</span> &amp;&amp; leftDepth - rightDepth &gt;= -<span class="hljs-number">1</span> ? <span class="hljs-literal">true</span> : <span class="hljs-literal">false</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
 </ol>
 </li>
 <li><p>小结：</p>
@@ -370,6 +370,11 @@
 <ol>
 <li><p>递归</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title function_">invertTree</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>    <span class="hljs-comment">// 递归反转，时间 O（n），空间 O（n）</span><br>    <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    <span class="hljs-type">TreeNode</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> root.left;  <span class="hljs-comment">// 后面的操作会改变 left 指针，因此先保存下来</span><br>    root.left = invertTree(root.right);<br>    root.right = invertTree(left);<br>    <span class="hljs-keyword">return</span> root;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>小结：</p>
+<ol>
+<li>挺简单的，没啥好小结的</li>
 </ol>
 </li>
 </ul>
@@ -418,7 +423,7 @@
 </li>
 <li><p>小结：</p>
 <ol>
-<li>要注意 DFS 迭代时候，不是判断节点为 null，而是判断节点是否为叶子节点，这个路径是到叶子节点才有效</li>
+<li>要注意 DFS 迭代时候，不是判断节点为 null，而是判断节点是否为叶子节点（两个子节点为 null），这个路径是到叶子节点才有效</li>
 </ol>
 </li>
 </ul>
@@ -620,6 +625,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/06/21/%E7%AE%97%E6%B3%95/%E4%B8%93%E9%A1%B9%E7%AE%97%E6%B3%95%E9%A2%98%E7%9B%AE/algorithom4/" title="算法专项精选题 - 树（二）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">算法专项精选题 - 树（二）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
